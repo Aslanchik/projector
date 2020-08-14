@@ -5,10 +5,10 @@ const LoggedOutLinks = () => {
   return (
     <ul className="right">
       <li>
-        <NavLink to="/">Register!</NavLink>
+        <NavLink to="/register">Register</NavLink>
       </li>
       <li>
-        <NavLink to="/">Login</NavLink>
+        <NavLink to="/login">Login</NavLink>
       </li>
     </ul>
   );
