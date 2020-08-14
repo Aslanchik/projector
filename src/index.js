@@ -1,23 +1,34 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
-import thunk from "redux-thunk";
+import { createFirestoreInstance } from "redux-firestore";
+import { ReactReduxFirebaseProvider } from "react-redux-firebase";
+import firebase from "firebase/app";
 
 import * as serviceWorker from "./serviceWorker";
 import "./index.css";
 import App from "./App";
-import rootReducer from "./store/reducers/rootReducer";
+import store from "./store/store";
 
-// CREATE STORE AND ENHANCE STORE WITH THUNK FOR ASYNC
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const rrfConfig = {
+  userProfile: "users",
+};
+
+const rrfProps = {
+  firebase,
+  config: rrfConfig,
+  dispatch: store.dispatch,
+  createFirestoreInstance,
+};
 
 ReactDOM.render(
   // APPLY REDUX STORE THAT WAS CREATED TO THE APPLICATION
   <Provider store={store}>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
+    <ReactReduxFirebaseProvider {...rrfProps}>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </ReactReduxFirebaseProvider>
   </Provider>,
   document.getElementById("root")
 );
