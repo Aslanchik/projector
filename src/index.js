@@ -1,16 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
+import thunk from "redux-thunk";
 
 import * as serviceWorker from "./serviceWorker";
 import "./index.css";
 import App from "./App";
 import rootReducer from "./store/reducers/rootReducer";
 
-const store = createStore(rootReducer);
+// CREATE STORE AND ENHANCE STORE WITH THUNK FOR ASYNC
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 ReactDOM.render(
+  // APPLY REDUX STORE THAT WAS CREATED TO THE APPLICATION
   <Provider store={store}>
     <React.StrictMode>
       <App />
