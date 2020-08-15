@@ -2,12 +2,13 @@ import React, { Component } from "react";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
+import { Redirect } from "react-router-dom";
 
 import Notifications from "./Notifications";
 import ProjectList from "../projects/ProjectList";
 
 class Dashboard extends Component {
-  render() {
+  renderDashboard = () => {
     const { projects } = this.props;
     return (
       <div className="dashboard container">
@@ -21,6 +22,10 @@ class Dashboard extends Component {
         </div>
       </div>
     );
+  };
+
+  render() {
+    return <>{this.renderDashboard()}</>;
   }
 }
 
@@ -28,6 +33,7 @@ const mapStateToProps = (state) => {
   const { projects } = state.firestore.ordered;
   return {
     projects: projects,
+    auth: state.firebase.auth,
   };
 };
 
