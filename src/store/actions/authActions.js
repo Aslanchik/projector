@@ -26,3 +26,9 @@ export const logout = () => {
       });
   };
 };
+
+export const register = (newUser) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    const firebase = getFirebase();
+  };
+};

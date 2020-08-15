@@ -18,7 +18,7 @@ class Login extends Component {
     this.props.login(this.state);
   };
 
-  render() {
+  renderForm = () => {
     return (
       <div className="container">
         <form className="white" onSubmit={this.handleSubmit}>
@@ -38,11 +38,16 @@ class Login extends Component {
         </form>
       </div>
     );
+  };
+
+  render() {
+    return <>{this.renderForm()}</>;
   }
 }
 
 const mapStateToProps = (state) => {
   return {
+    auth: state.firebase.auth,
     authErr: state.auth.authErr,
   };
 };
