@@ -3,14 +3,16 @@ export const createProject = (project) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     // GET REF TO FIRESTORE
     const firestore = getFirestore();
+    const profile = getState().firebase.profile;
+    const authorId = getState().firebase.auth.uid;
     // GET REF TO PROJECTS COLLECTION
     firestore
       .collection("projects")
       .add({
         ...project,
-        authorFName: "Aslan",
-        authorLName: "Badalov",
-        authorId: 123,
+        authorFName: profile.firstName,
+        authorLName: profile.lastName,
+        authorId: authorId,
         createdAt: new Date(),
       })
       .then(() => {
