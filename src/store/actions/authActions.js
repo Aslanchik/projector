@@ -27,8 +27,29 @@ export const logout = () => {
   };
 };
 
-export const register = (newUser) => {
+export const register = ({ email, password, firstName, lastName }) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firebase = getFirebase();
+    const firestore = getFirestore();
+
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(({ user }) => {
+        return firestore
+          .collection("users")
+          .doc(user.uid)
+          .set({
+            firstName: firstName,
+            lastName: lastName,
+            initials: firstName[0] + lastName[0],
+          });
+      })
+      .then(() => {
+        dispatch({ type: "REGISTER_SUCC" });
+      })
+      .catch((err) => {
+        dispatch({ type: "REGISTER_ERR", err });
+      });
   };
 };

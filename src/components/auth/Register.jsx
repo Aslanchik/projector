@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 
+import { connect } from "react-redux";
+import { register } from "../../store/actions/authActions";
+
 class Register extends Component {
   state = {
     email: "",
@@ -13,10 +16,11 @@ class Register extends Component {
   };
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state);
+    this.props.register(this.state);
   };
 
   render() {
+    const { authErr } = this.props;
     return (
       <div className="container">
         <form className="white" onSubmit={this.handleSubmit}>
@@ -41,6 +45,9 @@ class Register extends Component {
             <button className="btn pink lighten-1 z-depth-0">
               Register Now!
             </button>
+            <div className="red-text center">
+              {authErr ? <p>{authErr}</p> : null}
+            </div>
           </div>
         </form>
       </div>
@@ -48,4 +55,16 @@ class Register extends Component {
   }
 }
 
-export default Register;
+const mapStateToProps = (state) => {
+  return {
+    authErr: state.auth.authErr,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    register: (newUser) => dispatch(register(newUser)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register);
