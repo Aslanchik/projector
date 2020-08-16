@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 import { isLoaded } from "react-redux-firebase";
 
 import * as serviceWorker from "./serviceWorker";
-import "./index.css";
+import "./styles/main.scss";
 import App from "./App";
 import store from "./store/store";
 
