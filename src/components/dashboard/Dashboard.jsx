@@ -39,7 +39,10 @@ const mapStateToProps = (state) => {
 
 export default compose(
   // CONNECT TO FIRESTORE COLLECTION
-  firestoreConnect(["projects", { collection: "notifications", limit: 3 }]),
+  firestoreConnect([
+    { collection: "projects", orderBy: ["createdAt", "desc"] },
+    { collection: "notifications", limit: 3, orderBy: ["time", "desc"] },
+  ]),
   // CONNECT TO REDUX
   connect(mapStateToProps)
 )(Dashboard);
