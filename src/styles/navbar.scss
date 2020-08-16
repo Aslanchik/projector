@@ -1,3 +1,11 @@
 .nav-wrapper {
   background-color: $PURPLE;
 }
+.btn-floating {
+  background-color: $RED;
+  transition: all 0.5s ease-in-out;
+  &:hover {
+    background-color: $WHITE;
+    color: $PURPLE;
+  }
+}
