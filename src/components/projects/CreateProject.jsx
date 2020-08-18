@@ -9,12 +9,11 @@ class CreateProject extends Component {
     title: "",
     category: "",
     description: "",
-    tech: {
-      frontend: "",
-      backend: "",
-      db: "",
-    },
-    estimatedTime: "",
+    techFrontend: "",
+    techBackend: "",
+    techDb: "",
+    timeAmount: "",
+    timeUnit: "",
   };
 
   componentDidMount() {
@@ -22,82 +21,93 @@ class CreateProject extends Component {
   }
 
   handleChange = (e) => {
-    if ([e.target.id] === "tech") {
-      const tech = [...this.state.tech];
-      tech.push(e.target.value);
-      console.log(tech);
-      this.setState({ tech });
-    }
     this.setState({ [e.target.id]: e.target.value });
   };
-  
+
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.createProject(this.state);
     this.props.history.push("/");
   };
 
-  /* renderSelect = () =>{
-    document.addEventListener("DOMContentLoaded", function () {
-      const elems = document.querySelectorAll("select");
-      const instances = M.FormSelect.init(elems, options);
-    });
-  } */
+  renderInput = (type, name, title, ...rest) => {
+    if (type === "textarea") {
+      return (
+        <>
+          <label htmlFor={name}>{title}</label>
+          <textarea
+            id={name}
+            {...rest}
+            name={name}
+            className="materialize-textarea"
+            data-length="120"
+            onChange={this.handleChange}
+          ></textarea>
+        </>
+      );
+    }
+    return (
+      <>
+        <label htmlFor={name}>{title}</label>
+        <input
+          type={type}
+          id={name}
+          name={name}
+          {...rest}
+          onChange={this.handleChange}
+        />
+      </>
+    );
+  };
 
   render() {
     return (
       <div className="container">
-        <form className="white" onSubmit={this.handleSubmit}>
-          <h5 className="grey-text text-darken-3">Create New Project</h5>
+        <form className="" onSubmit={this.handleSubmit}>
+          <h4 className="grey-text text-darken-3">Create New Project</h4>
           <div className="row">
             <div className="input-field col s12">
-              <label htmlFor="title">Title</label>
-              <input type="text" id="title" onChange={this.handleChange} />
+              {this.renderInput("text", "title", "Title")}
             </div>
           </div>
           <div className="row">
             <div className="input-field col s12">
-              <select className="icons">
-                <option value="" disabled selected>
+              <select
+                id="category"
+                name="category"
+                defaultValue=""
+                onChange={this.handleChange}
+              >
+                <option value="" disabled>
                   Choose category
                 </option>
-                <option value="php" className="left">
-                  E-Commerce
-                </option>
-                <option value="php" className="left">
-                  CRM
-                </option>
-                <option value="php" className="left">
-                  Progressive Web App
-                </option>
-                <option value="php" className="left">
-                  Time Management
-                </option>
-                <option value="nodejs" className="left">
-                  Project Planner
-                </option>
-                <option value="ruby" className="left">
-                  Other
-                </option>
+                <option value="e-commerce">E-Commerce</option>
+                <option value="crm">CRM</option>
+                <option value="pwa">Progressive Web App</option>
+                <option value="timeManagement">Time Management</option>
+                <option value="projectPlan">Project Planner</option>
+                <option value="other">Other</option>
               </select>
-              <label>Backend</label>
+              <label>Category</label>
             </div>
           </div>
           <div className="row">
             <div className="input-field col s12">
-              <label htmlFor="description">Project Description</label>
-              <textarea
-                id="description"
-                className="materialize-textarea"
-                data-length="120"
-                onChange={this.handleChange}
-              ></textarea>
+              {this.renderInput(
+                "textarea",
+                "description",
+                "Project Description"
+              )}
             </div>
           </div>
           <div className="row">
             <div className="input-field col s12 m4">
-              <select className="icons">
-                <option value="" disabled selected>
+              <select
+                defaultValue=""
+                id="techFrontend"
+                onChange={this.handleChange}
+              >
+                <option value="" disabled>
                   Choose frontend
                 </option>
                 <option value="vanilla">Vanilla</option>
@@ -105,12 +115,17 @@ class CreateProject extends Component {
                 <option value="react">React</option>
                 <option value="angular">Angular</option>
                 <option value="vue">Vue</option>
+                <option value="ember">Ember</option>
               </select>
               <label>Frontend</label>
             </div>
             <div className="input-field col s12 m4">
-              <select className="icons">
-                <option value="" disabled selected>
+              <select
+                id="techBackend"
+                defaultValue=""
+                onChange={this.handleChange}
+              >
+                <option value="" disabled className="grey-text">
                   Choose backend
                 </option>
                 <option value="php" className="left">
@@ -122,12 +137,21 @@ class CreateProject extends Component {
                 <option value="ruby" className="left">
                   Ruby
                 </option>
+                <option value="java" className="left">
+                  Java
+                </option>
+                <option value="python" className="left">
+                  Python
+                </option>
+                <option value="rust" className="left">
+                  Rust
+                </option>
               </select>
               <label>Backend</label>
             </div>
             <div className="input-field col s12 m4">
-              <select className="icons">
-                <option value="" disabled selected>
+              <select id="techDb" defaultValue="" onChange={this.handleChange}>
+                <option value="" disabled>
                   Choose database
                 </option>
                 <option value="sql" className="left">
@@ -144,13 +168,37 @@ class CreateProject extends Component {
             </div>
           </div>
           <div className="row">
-            <div className="input-field col s-12">
-
+            <p className="text-grey">Time Estimate</p>
+            <div className="input-field col s3 m2">
+              <label htmlFor="time">Amount</label>
+              <input
+                type="number"
+                min="0"
+                id="timeAmount"
+                onChange={this.handleChange}
+              />
+            </div>
+            <div className="input-field col s6 m4">
+              <select
+                id="timeUnit"
+                defaultValue=""
+                onChange={this.handleChange}
+              >
+                <option value="" disabled>
+                  Time unit
+                </option>
+                <option value="hours">Hours</option>
+                <option value="days">Days</option>
+                <option value="weeks">Weeks</option>
+                <option value="months">Months</option>
+              </select>
+              <label>Time Unit</label>
             </div>
           </div>
+
           <div className="row">
             <div className="input-field col s12">
-              <button className="btn pink lighten-1 z-depth-0">
+              <button className="btn submitBtn z-depth-0">
                 Create Project!
               </button>
             </div>

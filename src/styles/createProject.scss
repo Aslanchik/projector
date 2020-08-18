@@ -1,0 +1,13 @@
+select {
+  font-family: "FontAwesome", "Baloo Tamma 2", cursive;
+}
+
+form {
+  background-color: $WHITE;
+}
+.submitBtn {
+  background-color: $PURPLE;
+  &:hover {
+    background-color: $DARK_BLUE;
+  }
+}
