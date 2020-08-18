@@ -14,6 +14,7 @@ export const createProject = (project) => {
         authorLName: profile.lastName,
         authorId: authorId,
         createdAt: new Date(),
+        upVote: 0,
       })
       .then(() => {
         // CONTINUE DISPATCH

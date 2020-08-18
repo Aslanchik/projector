@@ -8,7 +8,6 @@ import { useSelector } from "react-redux";
 import { isLoaded } from "react-redux-firebase";
 import "materialize-css/dist/css/materialize.min.css";
 import "materialize-css/dist/js/materialize.min.js";
-import "@fortawesome/fontawesome-free";
 
 import * as serviceWorker from "./serviceWorker";
 import "./styles/main.scss";

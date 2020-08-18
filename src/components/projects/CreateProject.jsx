@@ -12,7 +12,7 @@ class CreateProject extends Component {
     techFrontend: "",
     techBackend: "",
     techDb: "",
-    timeAmount: "",
+    timeAmount: null,
     timeUnit: "",
   };
 
@@ -154,15 +154,9 @@ class CreateProject extends Component {
                 <option value="" disabled>
                   Choose database
                 </option>
-                <option value="sql" className="left">
-                  SQL
-                </option>
-                <option value="mongodb" className="left">
-                  MongoDB
-                </option>
-                <option value="graphql" className="left">
-                  GraphQL
-                </option>
+                <option value="sql">SQL</option>
+                <option value="mongodb">MongoDB</option>
+                <option value="graphql">GraphQL</option>
               </select>
               <label>Database</label>
             </div>
@@ -199,7 +193,7 @@ class CreateProject extends Component {
           <div className="row">
             <div className="input-field col s12">
               <button className="btn submitBtn z-depth-0">
-                Create Project!
+                Create Project <i class="material-icons right">send</i>
               </button>
             </div>
           </div>
