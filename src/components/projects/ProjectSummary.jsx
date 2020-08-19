@@ -29,10 +29,10 @@ const ProjectSummary = ({
           </span>
         </h5>
         <div className="row">
-          <div className="col s2 grey-text text-darken-2">
+          <div className="col s3 grey-text text-darken-2">
             <span>{category}</span>
           </div>
-          <div className="col s4 grey-text valign-wrapper">
+          <div className="col s5 grey-text valign-wrapper">
             <i class="material-icons alarmIcon left-align">alarm</i>{" "}
             {timeAmount}
             {"  "}

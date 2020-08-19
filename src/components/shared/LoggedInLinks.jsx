@@ -11,6 +11,9 @@ const LoggedInLinks = ({ profile, ...props }) => {
         <NavLink to="/create-project">New Project</NavLink>
       </li>
       <li>
+        <NavLink to="/all-projects">All Projects</NavLink>
+      </li>
+      <li>
         <a onClick={props.logout}>Logout</a>
       </li>
       <li>
