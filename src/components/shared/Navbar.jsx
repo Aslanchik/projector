@@ -12,14 +12,16 @@ const Navbar = ({ auth, profile, ...props }) => {
     <LoggedOutLinks />
   );
   return (
-    <nav className="nav-wrapper">
-      <div className="container">
-        <Link to="/" className="brand-logo">
-          Projector
-        </Link>
-        {auth.isLoaded && links}
-      </div>
-    </nav>
+    <div class="navbar-fixed">
+      <nav className="nav-wrapper">
+        <div className="container">
+          <Link to="/" className="brand-logo">
+            Projector
+          </Link>
+          {auth.isLoaded && links}
+        </div>
+      </nav>
+    </div>
   );
 };
 

@@ -10,6 +10,7 @@ import CreateProject from "./components/projects/CreateProject";
 import PrivateRoute from "./utils/privateRoute";
 import PublicRoute from "./utils/publicRoute";
 import AllProjects from "./components/projects/AllProjects";
+import Profile from "./components/user/Profile";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <PublicRoute path="/register" component={Register} />
           <PrivateRoute path="/create-project" component={CreateProject} />
           <PrivateRoute path="/all-projects" component={AllProjects} />
+          <PrivateRoute path="/profile" component={Profile} />
         </Switch>
       </div>
     </BrowserRouter>

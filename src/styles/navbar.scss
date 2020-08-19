@@ -1,11 +1,14 @@
 .nav-wrapper {
   background-color: $PURPLE;
 }
-.btn-floating {
+.profileBtn {
   background-color: $RED;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.2s ease-in-out;
   &:hover {
-    background-color: $WHITE;
-    color: $PURPLE;
+    background-color: #e46975;
+    color: $WHITE;
   }
+}
+.active {
+  background-color: lighten($color: $PURPLE, $amount: 6);
 }
