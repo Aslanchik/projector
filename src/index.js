@@ -33,8 +33,8 @@ function AuthIsLoaded({ children }) {
   if (!isLoaded(auth))
     return (
       <div className="container">
-        <div class="progress valign-wrapper">
-          <div class="indeterminate"></div>
+        <div className="progress valign-wrapper">
+          <div className="indeterminate"></div>
         </div>
       </div>
     );

@@ -33,7 +33,7 @@ const ProjectSummary = ({
             <span>{category}</span>
           </div>
           <div className="col s5 grey-text valign-wrapper">
-            <i class="material-icons alarmIcon left-align">alarm</i>{" "}
+            <i className="material-icons alarmIcon left-align">alarm</i>{" "}
             {timeAmount}
             {"  "}
             {timeUnit}
