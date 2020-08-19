@@ -20,7 +20,7 @@ const ProjectSummary = ({
   },
 }) => {
   return (
-    <div className="card z-depth-0 project-summary">
+    <div className="card project-summary">
       <div className="card-content grey-text text-darken-3">
         <h5 className="card-title">
           {firstCharUppercase(title)}{" "}
@@ -29,14 +29,30 @@ const ProjectSummary = ({
           </span>
         </h5>
         <div className="row">
-          <div className="col s1 grey-text text-darken-2">
+          <div className="col s2 grey-text text-darken-2">
             <span>{category}</span>
           </div>
-          <div className="col s3 grey-text text-align-center">
-            <span class="material-icons">alarm</span> {timeAmount} {timeUnit}
+          <div className="col s4 grey-text valign-wrapper">
+            <i class="material-icons alarmIcon left-align">alarm</i>{" "}
+            {timeAmount}
+            {"  "}
+            {timeUnit}
           </div>
         </div>
-        <p className="grey-text">{moment(createdAt.toDate()).calendar()}</p>
+        <div className="card-action">
+          <div>
+            <p className="grey-text left">
+              {moment(createdAt.toDate()).calendar()} -{" "}
+              <span>
+                {firstCharUppercase(fname)} {firstCharUppercase(lname)}
+              </span>
+            </p>
+            <p className="grey-text right valign-wrapper">
+              <i className="material-icons green-text upVoteIcon">favorite</i>{" "}
+              {upVote}
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );

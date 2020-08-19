@@ -1,0 +1,16 @@
+.alarmIcon,
+.upVoteIcon {
+  font-size: 1.5rem;
+  margin-right: 2px;
+}
+.devI {
+  font-size: 3rem;
+  margin-right: 5px;
+}
+
+@media only screen and (max-width: 766px) {
+  .devI {
+    font-size: 2rem;
+    margin-right: 4px;
+  }
+}
