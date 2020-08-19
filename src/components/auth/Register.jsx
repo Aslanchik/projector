@@ -23,33 +23,55 @@ class Register extends Component {
     const { authErr } = this.props;
     return (
       <div className="container">
-        <form className="white" onSubmit={this.handleSubmit}>
-          <h5 className="grey-text text-darken-3">Log In</h5>
-          <div className="input-field">
-            <label htmlFor="firstName">First Name</label>
-            <input type="text" id="firstName" onChange={this.handleChange} />
+        <div className="row">
+          <div className="col s9 offset-s1">
+            <form className="registerForm" onSubmit={this.handleSubmit}>
+              <h4 className="grey-text text-darken-3">Register</h4>
+              <div className="row">
+                <div className="input-field col s6">
+                  <i className="material-icons prefix">face</i>
+                  <label htmlFor="firstName">First Name</label>
+                  <input
+                    type="text"
+                    id="firstName"
+                    onChange={this.handleChange}
+                  />
+                </div>
+                <div className="input-field col s6">
+                  <input
+                    type="text"
+                    id="lastName"
+                    onChange={this.handleChange}
+                  />
+                  <label htmlFor="lastName">Last Name</label>
+                </div>
+              </div>
+
+              <div className="input-field">
+                <i className="material-icons prefix">email</i>
+                <label htmlFor="email">Email</label>
+                <input type="email" id="email" onChange={this.handleChange} />
+              </div>
+              <div className="input-field">
+                <i className="material-icons prefix">vpn_key</i>
+                <label htmlFor="password">Password</label>
+                <input
+                  type="password"
+                  id="password"
+                  onChange={this.handleChange}
+                />
+              </div>
+              <div className="input-field">
+                <button className="btn submitBtn lighten-1 z-depth-0">
+                  <i className="material-icons right">send</i>Register Now!
+                </button>
+                <div className="red-text center">
+                  {authErr ? <p>{authErr}</p> : null}
+                </div>
+              </div>
+            </form>
           </div>
-          <div className="input-field">
-            <label htmlFor="lastName">Last Name</label>
-            <input type="text" id="lastName" onChange={this.handleChange} />
-          </div>
-          <div className="input-field">
-            <label htmlFor="email">Email</label>
-            <input type="email" id="email" onChange={this.handleChange} />
-          </div>
-          <div className="input-field">
-            <label htmlFor="password">Password</label>
-            <input type="password" id="password" onChange={this.handleChange} />
-          </div>
-          <div className="input-field">
-            <button className="btn pink lighten-1 z-depth-0">
-              Register Now!
-            </button>
-            <div className="red-text center">
-              {authErr ? <p>{authErr}</p> : null}
-            </div>
-          </div>
-        </form>
+        </div>
       </div>
     );
   }

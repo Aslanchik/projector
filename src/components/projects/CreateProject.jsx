@@ -63,7 +63,7 @@ class CreateProject extends Component {
   render() {
     return (
       <div className="container">
-        <form className="" onSubmit={this.handleSubmit}>
+        <form className="createProjForm" onSubmit={this.handleSubmit}>
           <h4 className="grey-text text-darken-3">Create New Project</h4>
           <div className="row">
             <div className="input-field col s12">
