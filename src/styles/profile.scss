@@ -1,0 +1,10 @@
+.editBtn {
+  background-color: $PURPLE;
+  &:hover {
+    background-color: $DARK_BLUE;
+  }
+}
+
+.card-title {
+  color: $DARK_BLUE;
+}

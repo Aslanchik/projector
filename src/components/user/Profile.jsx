@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { compose } from "redux";
+import { firestoreConnect } from "react-redux-firebase";
 
 import { firstCharUppercase } from "../../utils/pipes";
 import ProjectList from "../projects/ProjectList";
@@ -16,15 +18,14 @@ class Profile extends Component {
         <div className="section col s12">
           <div className="row">
             <div className="col s12 m4">
-              <h5 className="">Profile</h5>
               <div className="card">
                 <div className="card-image">
                   <img src="https://cdn.pixabay.com/photo/2018/11/13/21/43/instagram-3814049_960_720.png" />
-                  <span className="card-title">
+                  <span className="card-title" style={{ color: "#171738" }}>
                     {isLoaded && firstCharUppercase(firstName)}{" "}
                     {isLoaded && firstCharUppercase(lastName)}
                   </span>
-                  <a className="btn-floating halfway-fab waves-effect waves-light red">
+                  <a className="btn-large btn-floating halfway-fab waves-effect waves-light editBtn">
                     <i className="material-icons">create</i>
                   </a>
                 </div>
@@ -62,4 +63,11 @@ const mapStateToProps = ({
   };
 };
 
-export default connect(mapStateToProps)(Profile);
+export default compose(
+  // CONNECT TO FIRESTORE COLLECTION
+  firestoreConnect([
+    { collection: "projects", orderBy: ["createdAt", "desc"] },
+  ]),
+  // CONNECT TO REDUX
+  connect(mapStateToProps)
+)(Profile);
