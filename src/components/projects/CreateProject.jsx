@@ -34,7 +34,6 @@ class CreateProject extends Component {
     if (type === "textarea") {
       return (
         <>
-          <label htmlFor={name}>{title}</label>
           <textarea
             id={name}
             {...rest}
@@ -43,12 +42,12 @@ class CreateProject extends Component {
             data-length="120"
             onChange={this.handleChange}
           ></textarea>
+          <label htmlFor={name}>{title}</label>
         </>
       );
     }
     return (
       <>
-        <label htmlFor={name}>{title}</label>
         <input
           type={type}
           id={name}
@@ -56,6 +55,7 @@ class CreateProject extends Component {
           {...rest}
           onChange={this.handleChange}
         />
+        <label htmlFor={name}>{title}</label>
       </>
     );
   };

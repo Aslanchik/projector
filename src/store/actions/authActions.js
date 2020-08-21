@@ -43,6 +43,8 @@ export const register = ({ email, password, firstName, lastName }) => {
             firstName: firstName,
             lastName: lastName,
             initials: firstName[0] + lastName[0],
+            avatarUrl: "",
+            aboutMe: "",
           });
       })
       .then(() => {

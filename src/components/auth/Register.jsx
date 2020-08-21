@@ -24,18 +24,18 @@ class Register extends Component {
     return (
       <div className="container">
         <div className="row">
-          <div className="col s9 offset-s1">
+          <div className="col s10 offset-s1 center-align">
             <form className="registerForm" onSubmit={this.handleSubmit}>
               <h4 className="grey-text text-darken-3">Register</h4>
               <div className="row">
                 <div className="input-field col s6">
                   <i className="material-icons prefix">face</i>
-                  <label htmlFor="firstName">First Name</label>
                   <input
                     type="text"
                     id="firstName"
                     onChange={this.handleChange}
                   />
+                  <label htmlFor="firstName">First Name</label>
                 </div>
                 <div className="input-field col s6">
                   <input
@@ -46,20 +46,31 @@ class Register extends Component {
                   <label htmlFor="lastName">Last Name</label>
                 </div>
               </div>
-
-              <div className="input-field">
-                <i className="material-icons prefix">email</i>
-                <label htmlFor="email">Email</label>
-                <input type="email" id="email" onChange={this.handleChange} />
+              <div className="row">
+                <div className="col s12">
+                  <div className="input-field">
+                    <i className="material-icons prefix">email</i>
+                    <input
+                      type="email"
+                      id="email"
+                      onChange={this.handleChange}
+                    />
+                    <label htmlFor="email">Email</label>
+                  </div>
+                </div>
               </div>
-              <div className="input-field">
-                <i className="material-icons prefix">vpn_key</i>
-                <label htmlFor="password">Password</label>
-                <input
-                  type="password"
-                  id="password"
-                  onChange={this.handleChange}
-                />
+              <div className="row">
+                <div className="col s12">
+                  <div className="input-field">
+                    <i className="material-icons prefix">vpn_key</i>
+                    <input
+                      type="password"
+                      id="password"
+                      onChange={this.handleChange}
+                    />
+                    <label htmlFor="password">Password</label>
+                  </div>
+                </div>
               </div>
               <div className="input-field">
                 <button className="btn submitBtn lighten-1 z-depth-0">
