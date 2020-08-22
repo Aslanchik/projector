@@ -16,8 +16,13 @@ class UserInfo extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.update(this.state);
-    this.props.history.push("/");
+    const { aboutMe, avatarUrl } = this.state;
+    // CHECK IF EITHER IS EMPTY AND THEN SEND DEPENDING ON WHAT IS IN THE STATE
+    if (aboutMe === "") this.props.update({ avatarUrl });
+    else if (avatarUrl === "") this.props.update({ aboutMe });
+    else this.props.update(this.state);
+    // CLOSE EDIT WINDOW
+    document.querySelector(".closeBtn").click();
   };
 
   renderInput = (type, name, title, ...rest) => {
@@ -79,7 +84,7 @@ class UserInfo extends Component {
         </div>
         <div className="card-reveal">
           <span className="card-title grey-text text-darken-4">
-            Edit Profile<i className="material-icons right">close</i>
+            Edit Profile<i className="material-icons right closeBtn">close</i>
           </span>
           <div className="editForm">
             <form onSubmit={this.handleSubmit}>
