@@ -1,6 +1,6 @@
 $DARK_BLUE: #171738;
 $PURPLE: #593c8f;
-$LIGHT_PURPLE: #7652b7;
+$LIGHT_PURPLE: #987ec9;
 $LIGHT_BLUE: #8ef9f3;
 $RED: #db5461;
 $LIGHT_RED: #ffd9ce;
@@ -10,19 +10,18 @@ $GREEN: #21c063;
 // INPUTS
 
 /* Inactive/Active Default input field color */
-.input-field input[type]:not([readonly]),
 .input-field input[type]:focus:not([readonly]),
 .input-field textarea:not([readonly]),
 .input-field textarea:focus:not([readonly]) {
-  border-bottom: 0.3px solid #7652b7;
-  box-shadow: 0 0.3px 0 0 #7652b7;
+  border-bottom: 0.3px solid $LIGHT_PURPLE;
+  box-shadow: 0 0.3px 0 0 $LIGHT_PURPLE;
 }
 
 /* Inactive/Active Default input label color */
 .input-field input[type]:focus:not([readonly]) + label,
 .input-field textarea:focus:not([readonly]) + label,
 .input-field i.active {
-  color: #7652b7 !important;
+  color: $LIGHT_PURPLE !important;
 }
 
 /* Active/Inactive Invalid input field colors */
