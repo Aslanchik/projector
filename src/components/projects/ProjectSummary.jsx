@@ -1,10 +1,21 @@
 import React from "react";
 import moment from "moment";
+import { Link } from "react-router-dom";
 
 import { firstCharUppercase, determineTechStack } from "../../utils/pipes";
+import { upVoteProject } from "../../store/actions/projectActions";
+import { connect } from "react-redux";
+
+const handleUpVote = (project, props) => {
+  const upVotedProject = { ...project };
+  upVotedProject.upVote++;
+  props.upVoteProject(upVotedProject);
+};
 
 const ProjectSummary = ({
+  project,
   project: {
+    id,
     title,
     authorFName: fname,
     authorLName: lname,
@@ -18,16 +29,19 @@ const ProjectSummary = ({
     timeUnit,
     upVote,
   },
+  ...props
 }) => {
   return (
     <div className="card project-summary">
       <div className="card-content grey-text text-darken-3">
-        <h5 className="card-title">
-          {firstCharUppercase(title)}{" "}
-          <span className="right">
-            {determineTechStack(techFrontend, techBackend, techDb)}
-          </span>
-        </h5>
+        <Link to={`/project/${id}`}>
+          <h5 className="card-title">
+            {firstCharUppercase(title)}{" "}
+            <span className="right">
+              {determineTechStack(techFrontend, techBackend, techDb)}
+            </span>
+          </h5>
+        </Link>
         <div className="row">
           <div className="col s3 grey-text text-darken-2">
             <span>{category}</span>
@@ -48,7 +62,12 @@ const ProjectSummary = ({
               </span>
             </p>
             <p className="grey-text right valign-wrapper">
-              <i className="material-icons green-text upVoteIcon">favorite</i>{" "}
+              <i
+                className="material-icons green-text upVoteIcon"
+                onClick={() => handleUpVote(project, props)}
+              >
+                favorite_border
+              </i>{" "}
               {upVote}
             </p>
           </div>
@@ -58,4 +77,10 @@ const ProjectSummary = ({
   );
 };
 
-export default ProjectSummary;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    upVoteProject: (project) => dispatch(upVoteProject(project)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(ProjectSummary);

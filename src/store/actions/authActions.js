@@ -45,6 +45,7 @@ export const register = ({ email, password, firstName, lastName }) => {
             initials: firstName[0] + lastName[0],
             avatarUrl: "",
             aboutMe: "",
+            upVoted: [],
           });
       })
       .then(() => {

@@ -10,7 +10,10 @@ export const update = (updatedUser) => {
       .collection("users")
       .doc(uid)
       .set({
-        ...profile,
+        firstName: profile.firstName,
+        lastName: profile.lastName,
+        initials: profile.initials,
+        upVoted: profile.upVoted,
         ...updatedUser,
       })
       .then(() => {

@@ -9,7 +9,7 @@ import UserInfo from "./UserInfo";
 class Profile extends Component {
   render() {
     const { profile, projects } = this.props;
-    console.log(projects);
+
     return (
       <div className="container">
         <div className="section col s12">
@@ -28,25 +28,29 @@ class Profile extends Component {
 
 const mapStateToProps = ({
   firebase: { auth, profile },
-  firestore: { ordered },
+  firestore: {
+    ordered: { projects },
+  },
 }) => {
   return {
-    projects: ordered.projects,
+    projects,
     auth,
     profile,
   };
 };
 
 export default compose(
-  // CONNECT TO FIRESTORE COLLECTION
-
+  // CONNECT TO REDUX
   connect(mapStateToProps),
+  // CONNECT TO FIRESTORE COLLECTION
   firestoreConnect((props) => [
     {
+      // Declare which collection
       collection: "projects",
+      // Query specific projects
       where: [["authorId", "==", props.auth.uid]],
+      // Order them by which one was created most recently
       orderBy: ["createdAt", "desc"],
     },
   ])
-  // CONNECT TO REDUX
 )(Profile);
