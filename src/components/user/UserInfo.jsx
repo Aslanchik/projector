@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 import { firstCharUppercase } from "../../utils/pipes";
+import { update } from "../../store/actions/userActions";
 
 class UserInfo extends Component {
   state = {
@@ -10,6 +12,12 @@ class UserInfo extends Component {
 
   handleChange = (e) => {
     this.setState({ [e.target.id]: e.target.value });
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.props.update(this.state);
+    this.props.history.push("/");
   };
 
   renderInput = (type, name, title, ...rest) => {
@@ -58,7 +66,7 @@ class UserInfo extends Component {
             />
           )}
 
-          <span className="card-title" style={{ color: "#171738" }}>
+          <span className="card-title nameTitle">
             {isLoaded && firstCharUppercase(firstName)}{" "}
             {isLoaded && firstCharUppercase(lastName)}
           </span>
@@ -69,19 +77,30 @@ class UserInfo extends Component {
         <div className="card-content">
           {aboutMe ? <p>{aboutMe}</p> : <p>Write something about yourself!</p>}
         </div>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">
-            Edit Profile<i class="material-icons right">close</i>
+        <div className="card-reveal">
+          <span className="card-title grey-text text-darken-4">
+            Edit Profile<i className="material-icons right">close</i>
           </span>
-          <div className="input-group col s12">
-            {this.renderInput("text", "avatarUrl", "Avatar Url")}
-          </div>
-          <div className="input-group col s12">
-            {this.renderInput(
-              "textarea",
-              "aboutMe",
-              "Something about yourself.."
-            )}
+          <div className="editForm">
+            <form onSubmit={this.handleSubmit}>
+              <div className="input-field col s12">
+                {this.renderInput("text", "avatarUrl", "Avatar Url")}
+              </div>
+
+              <div className="input-field col s12">
+                {this.renderInput(
+                  "textarea",
+                  "aboutMe",
+                  "Something about yourself.."
+                )}
+              </div>
+
+              <div className="input-field col s12">
+                <button type="submit" className="btn submitBtn z-depth-0">
+                  Save<i className="material-icons right">save</i>
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
@@ -93,4 +112,10 @@ class UserInfo extends Component {
   }
 }
 
-export default UserInfo;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    update: (updatedUser) => dispatch(update(updatedUser)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(UserInfo);

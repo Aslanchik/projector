@@ -5,6 +5,9 @@
   }
 }
 
-.card-title {
-  color: $DARK_BLUE;
+.nameTitle {
+  color: $DARK_BLUE !important;
+  background-color: #f6f3f7ec;
+  max-height: 4rem;
+  padding-top: 1rem !important;
 }

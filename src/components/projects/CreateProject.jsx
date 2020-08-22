@@ -192,7 +192,7 @@ class CreateProject extends Component {
 
           <div className="row">
             <div className="input-field col s12">
-              <button className="btn submitBtn z-depth-0">
+              <button type="submit" className="btn submitBtn z-depth-0">
                 Create Project <i class="material-icons right">send</i>
               </button>
             </div>
