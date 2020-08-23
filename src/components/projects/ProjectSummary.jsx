@@ -5,11 +5,13 @@ import { Link } from "react-router-dom";
 import { firstCharUppercase, determineTechStack } from "../../utils/pipes";
 import { upVoteProject } from "../../store/actions/projectActions";
 import { connect } from "react-redux";
+import { addUpVotedProject } from "../../store/actions/userActions";
 
 const handleUpVote = (project, props) => {
   const upVotedProject = { ...project };
   upVotedProject.upVote++;
   props.upVoteProject(upVotedProject);
+  props.addUpVotedProject(project.id);
 };
 
 const ProjectSummary = ({
@@ -80,6 +82,7 @@ const ProjectSummary = ({
 const mapDispatchToProps = (dispatch) => {
   return {
     upVoteProject: (project) => dispatch(upVoteProject(project)),
+    addUpVotedProject: (projectId) => dispatch(addUpVotedProject(projectId)),
   };
 };
 

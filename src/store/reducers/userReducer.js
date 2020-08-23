@@ -8,6 +8,12 @@ const userReducer = (state = initState, action) => {
     case "UPDATE_USER_UPDATE":
       console.log("update user failed", action.err);
       return state;
+    case "UPDATE_UPVOTES_USER_SUCC":
+      console.log("user upvotes updated successfully", action.userId);
+      return state;
+    case "UPDATE_UPVOTES_USER_ERR":
+      console.log("user upvotes save err", action.err);
+      return state;
     default:
       return state;
   }

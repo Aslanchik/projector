@@ -29,8 +29,6 @@ export const createProject = (project) => {
 export const upVoteProject = (project) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
-    /* const profile = getState().firebase.profile; */
-    const userId = getState().firebase.auth.uid;
 
     firestore
       .collection("projects")
