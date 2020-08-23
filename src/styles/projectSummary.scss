@@ -3,6 +3,12 @@
   font-size: 1.5rem;
   margin-right: 2px;
 }
+
+.upVoteIcon {
+  &:hover {
+    cursor: pointer;
+  }
+}
 .devI {
   font-size: 3rem;
   margin-right: 5px;
