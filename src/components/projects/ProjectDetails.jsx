@@ -4,15 +4,26 @@ import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import moment from "moment";
 
+import { firstCharUppercase, determineTechStack } from "../../utils/pipes";
+
 const ProjectDetails = (props) => {
   const { project } = props;
-
+  console.log(project);
   return project ? (
     <div className="container section project-details">
-      <div className="card z-depth-0">
-        <div className="card-content">
-          <span className="card-title">{project.title}-</span>
-          <p>{project.content}</p>
+      <div className="card">
+        <div className="card-content grey-text text-darken-3">
+          <h6 className="card-title">
+            {firstCharUppercase(project.title)}
+            <span className="right">
+              {determineTechStack(
+                project.techFrontend,
+                project.techBackend,
+                project.techDb
+              )}
+            </span>
+          </h6>
+          <p>{project.description}</p>
           <div className="card-action grey lighten-4 grey-text">
             <div>
               Posted by {project.authorFName} {project.authorLName}
