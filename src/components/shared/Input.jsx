@@ -1,16 +1,16 @@
 import React from "react";
 
-const Input = ({ type, name, title, ...rest }) => {
+const Input = ({ type, name, title, defaultValue, ...rest }) => {
   if (type === "textarea") {
     return (
       <>
         <textarea
           id={name}
           {...rest}
+          defaultValue={defaultValue}
           name={name}
           className="materialize-textarea"
           data-length="120"
-          onChange={this.handleChange}
         ></textarea>
         <label htmlFor={name}>{title}</label>
       </>
@@ -21,9 +21,9 @@ const Input = ({ type, name, title, ...rest }) => {
       <input
         type={type}
         id={name}
+        defaultValue={defaultValue}
         name={name}
         {...rest}
-        onChange={this.handleChange}
       />
       <label htmlFor={name}>{title}</label>
     </>
