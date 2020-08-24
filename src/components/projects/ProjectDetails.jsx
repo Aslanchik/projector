@@ -5,6 +5,7 @@ import { firestoreConnect } from "react-redux-firebase";
 import moment from "moment";
 
 import { firstCharUppercase, determineTechStack } from "../../utils/pipes";
+import EditProject from "./EditProject";
 
 const renderUpVoteButton = (profile, project) => {
   if (profile.upVoted.includes(project.id)) return "favorite";
@@ -12,8 +13,8 @@ const renderUpVoteButton = (profile, project) => {
 };
 
 const ProjectDetails = (props) => {
-  const { project } = props;
-  console.log(project);
+  const { project, auth } = props;
+  console.log(auth);
   return project ? (
     <div className="container section">
       <div className="card projectDetails">
@@ -60,11 +61,13 @@ const ProjectDetails = (props) => {
           </div>
         </div>
 
-        <div className="center-align edit">
-          <button className="btn waves-effect waves-light editBtn activator">
-            <i className="material-icons  ">create</i>
-          </button>
-        </div>
+        {auth.uid === project.authorId ? (
+          <div className="center-align edit">
+            <button className="btn waves-effect waves-light editBtn activator">
+              <i className="material-icons  ">create</i>
+            </button>
+          </div>
+        ) : null}
         <div className="card-action grey lighten-4 grey-text">
           <div>
             Posted by {firstCharUppercase(project.authorFName)}{" "}
@@ -86,6 +89,7 @@ const ProjectDetails = (props) => {
           <span className="card-title grey-text text-darken-4">
             Edit Project<i className="material-icons right closeBtn">close</i>
           </span>
+          <EditProject project={project} />
         </div>
       </div>
     </div>
