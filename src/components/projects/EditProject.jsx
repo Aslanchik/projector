@@ -2,21 +2,26 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import M from "materialize-css/dist/js/materialize.min.js";
 
+import { updateProject } from "../../store/actions/projectActions";
 class EditProject extends Component {
   state = {
-    title: "",
-    category: "",
-    description: "",
-    techFrontend: "",
-    techBackend: "",
-    techDb: "",
-    timeAmount: null,
-    timeUnit: "",
+    ...this.props.project,
   };
 
   componentDidMount() {
     M.AutoInit();
   }
+
+  handleChange = (e) => {
+    this.setState({ [e.target.id]: e.target.value });
+  };
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.props.update(this.state);
+    // CLOSE EDIT WINDOW
+    document.querySelector(".closeBtn").click();
+  };
 
   renderInput = (type, name, title, defaultValue, ...rest) => {
     if (type === "textarea") {
@@ -197,7 +202,7 @@ class EditProject extends Component {
             </div>
             <div className="input-field col s12 center-align">
               <button type="submit" className="btn submitBtn z-depth-0">
-                Submit Edit <i class="material-icons right">send</i>
+                Save<i className="material-icons right">save</i>
               </button>
             </div>
           </div>
@@ -207,4 +212,10 @@ class EditProject extends Component {
   }
 }
 
-export default EditProject;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    update: (project) => dispatch(updateProject(project)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(EditProject);

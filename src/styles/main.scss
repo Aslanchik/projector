@@ -12,3 +12,11 @@ body {
   font-family: "Baloo Tamma 2", cursive;
   background-color: $WHITE;
 }
+
+.closeBtn {
+  color: $RED;
+  &:hover {
+    font-size: 2rem;
+    transition: all 0.1s ease-out;
+  }
+}

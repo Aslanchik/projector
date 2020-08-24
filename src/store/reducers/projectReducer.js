@@ -15,6 +15,12 @@ const projectReducer = (state = initState, action) => {
     case "UPVOTE_PROJECT_ERR":
       console.log("project upvote errrrrr", action.err);
       return state;
+    case "UPDATE_PROJECT_SUCC":
+      console.log("update project success", action.project);
+      return state;
+    case "UPDATE_PROJECT_ERR":
+      console.log("update project errorrrrr", action.err);
+      return state;
     default:
       return state;
   }

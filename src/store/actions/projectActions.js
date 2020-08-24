@@ -44,3 +44,22 @@ export const upVoteProject = (project) => {
       });
   };
 };
+
+export const updateProject = (project) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
+    const firestore = getFirestore();
+
+    firestore
+      .collection("projects")
+      .doc(project.id)
+      .set({
+        ...project,
+      })
+      .then(() => {
+        dispatch({ type: "UPDATE_PROJECT_SUCC", project });
+      })
+      .catch((err) => {
+        dispatch({ type: "UPDATE_PROJECT_ERR", err });
+      });
+  };
+};
