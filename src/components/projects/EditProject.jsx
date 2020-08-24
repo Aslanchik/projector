@@ -4,63 +4,82 @@ import M from "materialize-css/dist/js/materialize.min.js";
 
 class EditProject extends Component {
   state = {
-    title: this.props.project.title,
-    category: this.props.project.category,
-    description: this.props.project.description,
-    techFrontend: this.props.project.techFrontend,
-    techBackend: this.props.project.techBackend,
-    techDb: this.props.project.techDb,
-    timeAmount: this.props.project.timeAmount,
-    timeUnit: this.props.project.timeUnit,
+    title: "",
+    category: "",
+    description: "",
+    techFrontend: "",
+    techBackend: "",
+    techDb: "",
+    timeAmount: null,
+    timeUnit: "",
   };
 
   componentDidMount() {
     M.AutoInit();
   }
 
-  renderInput = (type, name, title, ...rest) => {
+  renderInput = (type, name, title, defaultValue, ...rest) => {
     if (type === "textarea") {
       return (
         <>
           <textarea
-            id={name}
             {...rest}
+            defaultValue={defaultValue}
+            id={name}
             name={name}
             className="materialize-textarea"
             data-length="120"
             onChange={this.handleChange}
           ></textarea>
-          <label htmlFor={name}>{title}</label>
+          <label htmlFor={name} className="active">
+            {title}
+          </label>
         </>
       );
     }
     return (
       <>
         <input
+          {...rest}
+          defaultValue={defaultValue}
           type={type}
           id={name}
           name={name}
-          {...rest}
           onChange={this.handleChange}
         />
-        <label htmlFor={name}>{title}</label>
+        <label htmlFor={name} className="active">
+          {title}
+        </label>
       </>
     );
   };
 
   render() {
+    const {
+      project: {
+        title,
+        category,
+        description,
+        techFrontend,
+        techBackend,
+        techDb,
+        timeAmount,
+        timeUnit,
+      },
+    } = this.props;
     return (
       <div className="section">
         <form onSubmit={this.handleSubmit}>
           <div className="row">
+            <span className="col s12 fieldTitle">General Information</span>
             <div className="input-field col s12 m5">
-              {this.renderInput("text", "title", "Title")}
+              {this.renderInput("text", "title", "Title", title)}
             </div>
             <div className="input-field col s12 m7">
               <select
                 id="category"
                 name="category"
-                defaultValue=""
+                defaultValue={category}
                 onChange={this.handleChange}
               >
                 <option value="" disabled>
@@ -79,13 +98,14 @@ class EditProject extends Component {
               {this.renderInput(
                 "textarea",
                 "description",
-                "Project Description"
+                "Project Description",
+                description
               )}
             </div>
-            <p className="col s12 fieldTitle">Tech Stack</p>
+            <span className="col s12 fieldTitle">Tech Stack</span>
             <div className="input-field col s12 m4">
               <select
-                defaultValue=""
+                defaultValue={techFrontend}
                 id="techFrontend"
                 onChange={this.handleChange}
               >
@@ -104,7 +124,7 @@ class EditProject extends Component {
             <div className="input-field col s12 m4">
               <select
                 id="techBackend"
-                defaultValue=""
+                defaultValue={techBackend}
                 onChange={this.handleChange}
               >
                 <option value="" disabled className="grey-text">
@@ -132,7 +152,11 @@ class EditProject extends Component {
               <label>Backend</label>
             </div>
             <div className="input-field col s12 m4">
-              <select id="techDb" defaultValue="" onChange={this.handleChange}>
+              <select
+                id="techDb"
+                defaultValue={techDb}
+                onChange={this.handleChange}
+              >
                 <option value="" disabled>
                   Choose database
                 </option>
@@ -142,20 +166,23 @@ class EditProject extends Component {
               </select>
               <label>Database</label>
             </div>
-            <p className="text-grey col s12 fieldTitle">Time Estimate</p>
+            <span className="text-grey col s12 fieldTitle">Time Estimate</span>
             <div className="input-field col s3 m2">
-              <label htmlFor="time">Amount</label>
+              <label htmlFor="time" className="active">
+                Amount
+              </label>
               <input
                 type="number"
                 min="0"
                 id="timeAmount"
+                defaultValue={timeAmount}
                 onChange={this.handleChange}
               />
             </div>
-            <div className="input-field col s9 m4">
+            <div className="input-field col s9 m10">
               <select
                 id="timeUnit"
-                defaultValue=""
+                defaultValue={timeUnit}
                 onChange={this.handleChange}
               >
                 <option value="" disabled>
