@@ -1,3 +1,41 @@
-.project-details {
-  height: 18rem;
+.projectDetails {
+  .projectContent {
+    min-height: 40vh;
+    .card-title {
+      margin-top: -30px;
+    }
+    h3 {
+      color: $PURPLE;
+      opacity: 0.9;
+    }
+    .fieldTitle {
+      color: $LIGHT_PURPLE;
+      opacity: 0.75;
+    }
+    .category,
+    .timeEstimate {
+      display: flex;
+      flex-direction: column;
+    }
+    .projectDetailsDescription {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  .techStack {
+    display: flex;
+    flex-direction: column;
+    margin-top: -10px;
+    line-height: 2;
+    p {
+      font-size: 1.2rem;
+    }
+  }
+  .edit {
+    margin-bottom: -20px;
+    .editBtn {
+      min-height: 3rem;
+      min-width: 5rem;
+    }
+  }
 }

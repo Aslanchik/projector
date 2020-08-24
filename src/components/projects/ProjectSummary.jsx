@@ -43,7 +43,7 @@ const ProjectSummary = ({
   ...props
 }) => {
   return (
-    <div className="card project-summary">
+    <div className="card project-summary hoverable">
       <div className="card-content grey-text text-darken-3">
         <Link to={`/project/${id}`}>
           <h5 className="card-title">
