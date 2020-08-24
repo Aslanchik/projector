@@ -39,7 +39,7 @@ class CreateProject extends Component {
             {...rest}
             name={name}
             className="materialize-textarea"
-            data-length="120"
+            data-length="1024"
             onChange={this.handleChange}
           ></textarea>
           <label htmlFor={name}>{title}</label>
@@ -63,15 +63,16 @@ class CreateProject extends Component {
   render() {
     return (
       <div className="container">
-        <form className="createProjForm" onSubmit={this.handleSubmit}>
-          <h4 className="grey-text text-darken-3">Create New Project</h4>
+        <form className="container" onSubmit={this.handleSubmit}>
+          <h4 className="grey-text text-darken-3 center-align">
+            Create New Project
+          </h4>
           <div className="row">
-            <div className="input-field col s12">
+            <span className="col s12 fieldTitle">General Information</span>
+            <div className="input-field col s12 m5">
               {this.renderInput("text", "title", "Title")}
             </div>
-          </div>
-          <div className="row">
-            <div className="input-field col s12">
+            <div className="input-field col s12 m7">
               <select
                 id="category"
                 name="category"
@@ -90,8 +91,6 @@ class CreateProject extends Component {
               </select>
               <label>Category</label>
             </div>
-          </div>
-          <div className="row">
             <div className="input-field col s12">
               {this.renderInput(
                 "textarea",
@@ -99,8 +98,7 @@ class CreateProject extends Component {
                 "Project Description"
               )}
             </div>
-          </div>
-          <div className="row">
+            <span className="col s12 fieldTitle">Tech Stack</span>
             <div className="input-field col s12 m4">
               <select
                 defaultValue=""
@@ -149,6 +147,7 @@ class CreateProject extends Component {
               </select>
               <label>Backend</label>
             </div>
+
             <div className="input-field col s12 m4">
               <select id="techDb" defaultValue="" onChange={this.handleChange}>
                 <option value="" disabled>
@@ -160,9 +159,7 @@ class CreateProject extends Component {
               </select>
               <label>Database</label>
             </div>
-          </div>
-          <div className="row">
-            <p className="text-grey">Time Estimate</p>
+            <span className="col s12 fieldTitle">Time Estimate</span>
             <div className="input-field col s3 m2">
               <label htmlFor="time">Amount</label>
               <input
@@ -172,7 +169,7 @@ class CreateProject extends Component {
                 onChange={this.handleChange}
               />
             </div>
-            <div className="input-field col s6 m4">
+            <div className="input-field col s9 m10">
               <select
                 id="timeUnit"
                 defaultValue=""
@@ -188,11 +185,8 @@ class CreateProject extends Component {
               </select>
               <label>Time Unit</label>
             </div>
-          </div>
-
-          <div className="row">
-            <div className="input-field col s12">
-              <button type="submit" className="btn submitBtn z-depth-0">
+            <div className="input-field col s12 center-align">
+              <button type="submit" className="btn submitBtn ">
                 Create Project <i class="material-icons right">send</i>
               </button>
             </div>

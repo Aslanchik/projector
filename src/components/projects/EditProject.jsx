@@ -33,7 +33,7 @@ class EditProject extends Component {
             id={name}
             name={name}
             className="materialize-textarea"
-            data-length="120"
+            data-length="1024"
             onChange={this.handleChange}
           ></textarea>
           <label htmlFor={name} className="active">
@@ -201,7 +201,7 @@ class EditProject extends Component {
               <label>Time Unit</label>
             </div>
             <div className="input-field col s12 center-align">
-              <button type="submit" className="btn submitBtn z-depth-0">
+              <button type="submit" className="btn submitBtn">
                 Save<i className="material-icons right">save</i>
               </button>
             </div>

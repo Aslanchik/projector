@@ -5,7 +5,18 @@ import { firestoreConnect } from "react-redux-firebase";
 import moment from "moment";
 
 import { firstCharUppercase, determineTechStack } from "../../utils/pipes";
+import { upVoteProject } from "../../store/actions/projectActions";
+import { addUpVotedProject } from "../../store/actions/userActions";
 import EditProject from "./EditProject";
+
+const handleUpVote = (project, props) => {
+  const upVotedProject = { ...project };
+  upVotedProject.upVote++;
+  if (!props.profile.upVoted.includes(project.id)) {
+    props.upVoteProject(upVotedProject);
+    props.addUpVotedProject(project.id);
+  }
+};
 
 const renderUpVoteButton = (profile, project) => {
   if (profile.upVoted.includes(project.id)) return "favorite";
@@ -75,7 +86,7 @@ const ProjectDetails = (props) => {
             <p className="grey-text right valign-wrapper">
               <i
                 className="material-icons green-text upVoteIcon"
-                /* onClick={() => handleUpVote(project, props)} */
+                onClick={() => handleUpVote(project, props)}
               >
                 {props.profile.isLoaded &&
                   renderUpVoteButton(props.profile, project)}
@@ -111,8 +122,15 @@ const mapStateToProps = ({
   };
 };
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    upVoteProject: (project) => dispatch(upVoteProject(project)),
+    addUpVotedProject: (projectId) => dispatch(addUpVotedProject(projectId)),
+  };
+};
+
 export default compose(
-  connect(mapStateToProps),
+  connect(mapStateToProps, mapDispatchToProps),
   firestoreConnect((props) => [
     { collection: "projects", doc: props.match.params.id, storeAs: "project" },
   ])
