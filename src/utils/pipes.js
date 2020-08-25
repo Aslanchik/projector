@@ -59,7 +59,13 @@ export const determineTechStack = (front, back, db) => {
   return techStack.map((item) => <i key={item} className={item}></i>);
 };
 
+export const renderUpVoteButton = (profile, project) => {
+  if (profile.upVoted.includes(project.id)) return "favorite";
+  else return "favorite_border";
+};
+
 export default {
   firstCharUppercase,
   determineTechStack,
+  renderUpVoteButton,
 };

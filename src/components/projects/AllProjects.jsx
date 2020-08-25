@@ -8,9 +8,7 @@ import ProjectList from "./ProjectList";
 import Input from "../shared/Input";
 
 class AllProjects extends Component {
-  state = {
-    projects: [],
-  };
+  state = { searchParam: "" };
 
   handleChange = (e) => {
     this.setState({ [e.target.id]: e.target.value });
@@ -20,17 +18,9 @@ class AllProjects extends Component {
     M.AutoInit();
   }
 
-  filterByInput = (e) => {
-    const projects = [...this.props.projects];
-    const searchParam = e.target.value;
-    const filteredProjects = projects.filter((project) =>
-      project.title.toLowerCase().includes(searchParam)
-    );
-    this.setState({ projects: filteredProjects });
-  };
-
   render() {
     const { projects } = this.props;
+    const { searchParam } = this.state;
     return (
       <div className="container">
         <div className="row">
@@ -41,9 +31,7 @@ class AllProjects extends Component {
                 type={"text"}
                 name={"searchParam"}
                 title={"Search project.."}
-                onChange={(e) => {
-                  this.filterByInput(e);
-                }}
+                onChange={this.handleChange}
               />
             </div>
           </div>
@@ -63,7 +51,25 @@ class AllProjects extends Component {
             </select>
           </div>
         </div>
-        <ProjectList projects={projects} />
+        {projects ? (
+          <ProjectList projects={projects} searchParam={searchParam} />
+        ) : (
+          <div className="center-align">
+            <div className="preloader-wrapper big active">
+              <div className="spinner-layer spinner-blue-only">
+                <div className="circle-clipper left">
+                  <div className="circle"></div>
+                </div>
+                <div className="gap-patch">
+                  <div className="circle"></div>
+                </div>
+                <div className="circle-clipper right">
+                  <div className="circle"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     );
   }

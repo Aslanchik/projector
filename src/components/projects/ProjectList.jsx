@@ -2,12 +2,20 @@ import React from "react";
 
 import ProjectSummary from "./ProjectSummary";
 
-const ProjectList = ({ projects }) => {
+const filterProjects = (projects, searchParam) => {
+  const filteredProjects = projects.filter((project) => {
+    return project.title.toLowerCase().includes(searchParam);
+  });
+
+  return filteredProjects;
+};
+
+const ProjectList = ({ projects, searchParam }) => {
   return (
     <div className="project-list section">
       {projects ? (
-        projects.map((project) => {
-          return <ProjectSummary key={project.id} project={project} />;
+        filterProjects(projects, searchParam).map((project) => {
+          return <ProjectSummary key={project.title} project={project} />;
         })
       ) : (
         <div className="center-align">

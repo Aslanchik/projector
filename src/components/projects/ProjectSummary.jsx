@@ -3,7 +3,11 @@ import moment from "moment";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-import { firstCharUppercase, determineTechStack } from "../../utils/pipes";
+import {
+  firstCharUppercase,
+  determineTechStack,
+  renderUpVoteButton,
+} from "../../utils/pipes";
 import { upVoteProject } from "../../store/actions/projectActions";
 import { addUpVotedProject } from "../../store/actions/userActions";
 
@@ -14,11 +18,6 @@ const handleUpVote = (project, props) => {
     props.upVoteProject(upVotedProject);
     props.addUpVotedProject(project.id);
   }
-};
-
-const renderUpVoteButton = (profile, project) => {
-  if (profile.upVoted.includes(project.id)) return "favorite";
-  else return "favorite_border";
 };
 
 const ProjectSummary = ({
