@@ -5,6 +5,7 @@ import { firestoreConnect } from "react-redux-firebase";
 
 import Notifications from "./Notifications";
 import ProjectList from "../projects/ProjectList";
+import ProjectSummary from "../projects/ProjectSummary";
 
 class Dashboard extends Component {
   renderDashboard = () => {
@@ -13,7 +14,11 @@ class Dashboard extends Component {
       <div className="dashboard container">
         <div className="row">
           <div className="col s10 m9">
-            <ProjectList projects={projects} />
+            {projects
+              ? projects.map((project) => (
+                  <ProjectSummary key={project.id} project={project} />
+                ))
+              : null}
           </div>
           <div className="col s12 m2 offset-m1">
             <Notifications notifications={notifications} />

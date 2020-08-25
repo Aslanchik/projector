@@ -8,7 +8,7 @@ import ProjectList from "./ProjectList";
 import Input from "../shared/Input";
 
 class AllProjects extends Component {
-  state = { searchParam: "" };
+  state = { searchParam: "", sortParam: "" };
 
   handleChange = (e) => {
     this.setState({ [e.target.id]: e.target.value });
@@ -20,7 +20,7 @@ class AllProjects extends Component {
 
   render() {
     const { projects } = this.props;
-    const { searchParam } = this.state;
+    const { searchParam, sortParam } = this.state;
     return (
       <div className="container">
         <div className="row">
@@ -52,7 +52,11 @@ class AllProjects extends Component {
           </div>
         </div>
         {projects ? (
-          <ProjectList projects={projects} searchParam={searchParam} />
+          <ProjectList
+            projects={projects}
+            searchParam={searchParam}
+            sortParam={sortParam}
+          />
         ) : (
           <div className="center-align">
             <div className="preloader-wrapper big active">
