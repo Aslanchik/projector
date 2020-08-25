@@ -100,7 +100,9 @@ const ProjectDetails = (props) => {
           <span className="card-title grey-text text-darken-4">
             Edit Project<i className="material-icons right closeBtn">close</i>
           </span>
-          <EditProject project={project} />
+          {auth.uid === project.authorId ? (
+            <EditProject project={project} />
+          ) : null}
         </div>
       </div>
     </div>

@@ -10,6 +10,7 @@ class EditProject extends Component {
 
   componentDidMount() {
     M.AutoInit();
+    console.log(this.props.project);
   }
 
   handleChange = (e) => {
