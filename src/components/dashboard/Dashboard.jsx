@@ -3,25 +3,53 @@ import { compose } from "redux";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 
-import Notifications from "./Notifications";
-import ProjectList from "../projects/ProjectList";
 import ProjectSummary from "../projects/ProjectSummary";
 
 class Dashboard extends Component {
+  renderProjects = () => {
+    const { projects } = this.props;
+    return (
+      <>
+        {projects.map((project, i) => (
+          <div className="row">
+            <h3 className={`col s1 center-align placement${i + 1}`}>{i + 1}</h3>
+            <div className="col s11">
+              <ProjectSummary key={project.id} project={project} />
+            </div>
+          </div>
+        ))}
+      </>
+    );
+  };
+
   renderDashboard = () => {
-    const { projects, notifications } = this.props;
+    const { projects } = this.props;
     return (
       <div className="dashboard container">
-        <div className="row">
-          <div className="col s10 m9">
-            {projects
-              ? projects.map((project) => (
-                  <ProjectSummary key={project.id} project={project} />
-                ))
-              : null}
-          </div>
-          <div className="col s12 m2 offset-m1">
-            <Notifications notifications={notifications} />
+        <div className="section">
+          <h4 className="center-align">Top Voted Projects</h4>
+          <div className="row">
+            <div className="col s12">
+              {projects ? (
+                this.renderProjects()
+              ) : (
+                <div className="center-align">
+                  <div className="preloader-wrapper big active">
+                    <div className="spinner-layer spinner-blue-only">
+                      <div className="circle-clipper left">
+                        <div className="circle"></div>
+                      </div>
+                      <div className="gap-patch">
+                        <div className="circle"></div>
+                      </div>
+                      <div className="circle-clipper right">
+                        <div className="circle"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -45,7 +73,7 @@ const mapStateToProps = (state) => {
 export default compose(
   // CONNECT TO FIRESTORE COLLECTION
   firestoreConnect([
-    { collection: "projects", orderBy: ["createdAt", "desc"] },
+    { collection: "projects", limit: 3, orderBy: ["upVote", "desc"] },
     { collection: "notifications", limit: 3, orderBy: ["time", "desc"] },
   ]),
   // CONNECT TO REDUX

@@ -3,10 +3,20 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import { firestoreConnect } from "react-redux-firebase";
 
-import ProjectList from "../projects/ProjectList";
 import UserInfo from "./UserInfo";
+import ProjectSummary from "../projects/ProjectSummary";
 
 class Profile extends Component {
+  renderProjects = (projects) => {
+    return (
+      <>
+        {projects.map((project) => (
+          <ProjectSummary key={project.id} project={project} />
+        ))}
+      </>
+    );
+  };
+
   render() {
     const { profile, projects } = this.props;
 
@@ -17,7 +27,7 @@ class Profile extends Component {
             <UserInfo profile={profile} />
             <div className="col s12 m7 offset-m1">
               <h4 className="center-align">My Projects</h4>
-              <ProjectList projects={projects} />
+              {this.renderProjects(projects)}
             </div>
           </div>
         </div>
