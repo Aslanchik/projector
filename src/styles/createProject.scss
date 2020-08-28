@@ -7,11 +7,15 @@
   .title {
     color: $PURPLE;
     font-weight: bold;
+    margin-left: 40px;
   }
   .submitBtn {
     background-color: $LIGHT_PURPLE;
+    margin-left: 40px;
     &:hover {
       background-color: $GREEN;
+      transform: translateX(15px);
+      transition: all 0.5s ease-in-out;
     }
   }
 }

@@ -24,14 +24,14 @@ class Register extends Component {
     return (
       <div className="section registerComp">
         <div className="row">
-          <div className="col l1 offset-l1">
+          <div className="col l1 offset-l1" data-aos="fade-right">
             <img
               className="registerLogo"
               src="/img/undraw_add_user_ipe3.svg"
               alt="register logo"
             />
           </div>
-          <div className="col s12 l8 offset-l1">
+          <div className="col s12 l8 offset-l1" data-aos="fade-left">
             <form className=" container" onSubmit={this.handleSubmit}>
               <h4 className="title">Register</h4>
               <div className="row">
@@ -81,7 +81,7 @@ class Register extends Component {
               </div>
               <div className="input-field">
                 <button className="btn submitBtn lighten-1 z-depth-0">
-                  <i className="material-icons right">send</i>Register Now!
+                  <i className="material-icons right">send</i>Submit
                 </button>
                 <div className="red-text center">
                   {authErr ? <p>{authErr}</p> : null}

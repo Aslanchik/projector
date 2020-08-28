@@ -11,7 +11,7 @@ class Dashboard extends Component {
     return (
       <>
         {projects.map((project, i) => (
-          <div className="row">
+          <div className="row" key={project.id}>
             <h3
               className={`col s1 center-align placement${i + 1}`}
               data-aos="fade-left"
@@ -24,7 +24,7 @@ class Dashboard extends Component {
               data-aos="fade-left"
               data-aos-duration="1000"
             >
-              <ProjectSummary key={project.id} project={project} />
+              <ProjectSummary project={project} />
             </div>
           </div>
         ))}

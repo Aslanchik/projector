@@ -22,14 +22,14 @@ class Login extends Component {
     return (
       <div className="section loginComp">
         <div className="row">
-          <div className="col l2 offset-l1">
+          <div className="col l2 offset-l1" data-aos="fade-right">
             <img
               className="loginLogo"
               src="/img/undraw_login_re_4vu2.svg"
               alt="login logo"
             />
           </div>
-          <div className="col s12 l7 offset-l1">
+          <div className="col s12 l7 offset-l1" data-aos="fade-left">
             <form
               className=" container  loginForm"
               onSubmit={this.handleSubmit}
