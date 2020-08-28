@@ -22,11 +22,18 @@ class Register extends Component {
   render() {
     const { authErr } = this.props;
     return (
-      <div className="container">
+      <div className="section registerComp">
         <div className="row">
-          <div className="col s10 offset-s1 center-align">
-            <form className="registerForm" onSubmit={this.handleSubmit}>
-              <h4 className="grey-text text-darken-3">Register</h4>
+          <div className="col l1 offset-l1">
+            <img
+              className="registerLogo"
+              src="/img/undraw_add_user_ipe3.svg"
+              alt="register logo"
+            />
+          </div>
+          <div className="col s12 l8 offset-l1">
+            <form className=" container" onSubmit={this.handleSubmit}>
+              <h4 className="title">Register</h4>
               <div className="row">
                 <div className="input-field col s6">
                   <i className="material-icons prefix">face</i>

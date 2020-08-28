@@ -20,11 +20,21 @@ class Login extends Component {
 
   renderForm = () => {
     return (
-      <div className="container">
+      <div className="section loginComp">
         <div className="row">
-          <div className="col s12 center-align">
-            <form className="loginForm container" onSubmit={this.handleSubmit}>
-              <h4 className="grey-text text-darken-3">Log In</h4>
+          <div className="col l2 offset-l1">
+            <img
+              className="loginLogo"
+              src="/img/undraw_login_re_4vu2.svg"
+              alt="login logo"
+            />
+          </div>
+          <div className="col s12 l7 offset-l1">
+            <form
+              className=" container  loginForm"
+              onSubmit={this.handleSubmit}
+            >
+              <h4 className="title">Log In</h4>
               <div className="row">
                 <div className="col s12">
                   <div className="input-field">
@@ -55,7 +65,7 @@ class Login extends Component {
                 <div className="col s12">
                   <div className="input-field">
                     <button className="btn submitBtn lighten-1 z-depth-0">
-                      <i className="material-icons right">send</i>Login
+                      <i className="material-icons right">send</i>Submit
                     </button>
                     <div className="red-text center">{this.props.authErr}</div>
                   </div>

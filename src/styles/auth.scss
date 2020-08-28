@@ -1,4 +1,99 @@
-.loginForm,
-.registerForm {
-  background-color: $WHITE;
+.loginComp {
+  .title {
+    color: $PURPLE;
+    font-weight: bold;
+    margin-left: 40px;
+  }
+  .submitBtn {
+    background-color: $LIGHT_PURPLE;
+    margin-left: 40px;
+    &:hover {
+      background-color: $GREEN;
+      transform: translateX(15px);
+      transition: all 0.5s ease-in-out;
+    }
+  }
+  .loginForm {
+    margin-top: 60px;
+  }
+
+  .loginLogo {
+    max-width: 500px;
+    margin-top: 30px;
+  }
+  .loginLogoMobile {
+    display: none;
+  }
+}
+
+.registerComp {
+  .title {
+    color: $PURPLE;
+    font-weight: bold;
+    margin-left: 50px;
+  }
+  .submitBtn {
+    background-color: $LIGHT_PURPLE;
+    margin-left: 50px;
+    &:hover {
+      background-color: $GREEN;
+      transform: translateX(15px);
+      transition: all 0.5s ease-in-out;
+    }
+  }
+  .registerLogo {
+    max-width: 400px;
+    margin-top: 110px;
+  }
+}
+
+@media only screen and (max-width: 1600px) {
+  .registerComp {
+    .registerLogo {
+      max-width: 350px;
+      transition: all 0.5s ease-in-out;
+    }
+  }
+}
+
+@media only screen and (max-width: 1470px) {
+  .loginComp {
+    .loginLogo {
+      max-width: 400px;
+      transition: all 0.5s ease-in-out;
+    }
+  }
+  .registerComp {
+    .registerLogo {
+      max-width: 300px;
+      transition: all 0.5s ease-in-out;
+    }
+  }
+}
+@media only screen and (max-width: 1250px) {
+  .loginComp {
+    .loginLogo {
+      max-width: 300px;
+      margin-top: 40px;
+      transition: all 0.5s ease-in-out;
+    }
+  }
+  .registerComp {
+    .registerLogo {
+      max-width: 250px;
+      transition: all 0.5s ease-in-out;
+    }
+  }
+}
+@media only screen and (max-width: 993px) {
+  .loginComp {
+    .loginLogo {
+      display: none;
+    }
+  }
+  .registerComp {
+    .registerLogo {
+      display: none;
+    }
+  }
 }

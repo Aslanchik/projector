@@ -20,19 +20,21 @@ class Profile extends Component {
   render() {
     const { profile, projects } = this.props;
 
-    return (
-      <div className="container">
+    return projects ? (
+      <div className="container profile">
         <div className="section col s12">
           <div className="row">
-            <UserInfo profile={profile} />
-            <div className="col s12 m7 offset-m1">
-              <h4 className="center-align">My Projects</h4>
+            <div data-aos="fade-right">
+              <UserInfo profile={profile} />
+            </div>
+            <div className="col s12 m7 offset-m1" data-aos="fade-left">
+              <h4 className="center-align title">My Projects</h4>
               {this.renderProjects(projects)}
             </div>
           </div>
         </div>
       </div>
-    );
+    ) : null;
   }
 }
 
