@@ -1,13 +1,41 @@
-select {
-  font-family: "FontAwesome", "Baloo Tamma 2", cursive;
+.createProject {
+  line-height: 3;
+  img {
+    max-width: 350px;
+    margin-top: 6rem;
+  }
+  .title {
+    color: $PURPLE;
+    font-weight: bold;
+  }
+  .submitBtn {
+    background-color: $LIGHT_PURPLE;
+    &:hover {
+      background-color: $GREEN;
+    }
+  }
 }
 
-.createProjForm {
-  background-color: $WHITE;
+@media only screen and (min-width: 1650px) {
+  .createProject {
+    img {
+      max-width: 430px;
+      transition: all 0.5s ease-in-out;
+    }
+  }
 }
-.submitBtn {
-  background-color: $LIGHT_PURPLE;
-  &:hover {
-    background-color: $GREEN;
+@media only screen and (max-width: 1450px) {
+  .createProject {
+    img {
+      max-width: 250px;
+      transition: all 0.5s ease-in-out;
+    }
+  }
+}
+@media only screen and (max-width: 993px) {
+  .createProject {
+    img {
+      display: none;
+    }
   }
 }

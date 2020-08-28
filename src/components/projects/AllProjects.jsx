@@ -22,8 +22,8 @@ class AllProjects extends Component {
     const { projects } = this.props;
     const { searchParam, sortParam } = this.state;
     return (
-      <div className="container">
-        <div className="row">
+      <div className="container allProjects" data-aos="fade-left">
+        <div className="row section searchBar">
           <div className="col s10">
             <div className="input-field">
               <i className="material-icons prefix">search</i>
@@ -51,29 +51,31 @@ class AllProjects extends Component {
             </select>
           </div>
         </div>
-        {projects ? (
-          <ProjectList
-            projects={projects}
-            searchParam={searchParam}
-            sortParam={sortParam}
-          />
-        ) : (
-          <div className="center-align">
-            <div className="preloader-wrapper big active">
-              <div className="spinner-layer spinner-blue-only">
-                <div className="circle-clipper left">
-                  <div className="circle"></div>
-                </div>
-                <div className="gap-patch">
-                  <div className="circle"></div>
-                </div>
-                <div className="circle-clipper right">
-                  <div className="circle"></div>
+        <div className="projects section">
+          {projects ? (
+            <ProjectList
+              projects={projects}
+              searchParam={searchParam}
+              sortParam={sortParam}
+            />
+          ) : (
+            <div className="center-align">
+              <div className="preloader-wrapper big active">
+                <div className="spinner-layer spinner-blue-only">
+                  <div className="circle-clipper left">
+                    <div className="circle"></div>
+                  </div>
+                  <div className="gap-patch">
+                    <div className="circle"></div>
+                  </div>
+                  <div className="circle-clipper right">
+                    <div className="circle"></div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     );
   }

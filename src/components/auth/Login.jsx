@@ -22,8 +22,8 @@ class Login extends Component {
     return (
       <div className="container">
         <div className="row">
-          <div className="col s6 offset-s3 center-align">
-            <form className="loginForm" onSubmit={this.handleSubmit}>
+          <div className="col s12 center-align">
+            <form className="loginForm container" onSubmit={this.handleSubmit}>
               <h4 className="grey-text text-darken-3">Log In</h4>
               <div className="row">
                 <div className="col s12">

@@ -14,4 +14,14 @@
     font-weight: bolder;
     margin-top: 70px;
   }
+  .title {
+    color: $PURPLE;
+    font-weight: bold;
+  }
+  .submitBtn {
+    background-color: $LIGHT_PURPLE;
+    &:hover {
+      background-color: $GREEN;
+    }
+  }
 }

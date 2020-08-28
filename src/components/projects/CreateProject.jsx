@@ -62,136 +62,148 @@ class CreateProject extends Component {
 
   render() {
     return (
-      <div className="container">
-        <form className="container" onSubmit={this.handleSubmit}>
-          <h4 className="grey-text text-darken-3 center-align">
-            Create New Project
-          </h4>
-          <div className="row">
-            <span className="col s12 fieldTitle">General Information</span>
-            <div className="input-field col s12 m5">
-              {this.renderInput("text", "title", "Title")}
-            </div>
-            <div className="input-field col s12 m7">
-              <select
-                id="category"
-                name="category"
-                defaultValue=""
-                onChange={this.handleChange}
-              >
-                <option value="" disabled>
-                  Choose category
-                </option>
-                <option value="e-commerce">E-Commerce</option>
-                <option value="crm">CRM</option>
-                <option value="pwa">Progressive Web App</option>
-                <option value="timeManagement">Time Management</option>
-                <option value="projectPlan">Project Planner</option>
-                <option value="other">Other</option>
-              </select>
-              <label>Category</label>
-            </div>
-            <div className="input-field col s12">
-              {this.renderInput(
-                "textarea",
-                "description",
-                "Project Description"
-              )}
-            </div>
-            <span className="col s12 fieldTitle">Tech Stack</span>
-            <div className="input-field col s12 m4">
-              <select
-                defaultValue=""
-                id="techFrontend"
-                onChange={this.handleChange}
-              >
-                <option value="" disabled>
-                  Choose frontend
-                </option>
-                <option value="vanilla">Vanilla</option>
-                <option value="jquery">Jquery</option>
-                <option value="react">React</option>
-                <option value="angular">Angular</option>
-                <option value="vue">Vue</option>
-                <option value="ember">Ember</option>
-              </select>
-              <label>Frontend</label>
-            </div>
-            <div className="input-field col s12 m4">
-              <select
-                id="techBackend"
-                defaultValue=""
-                onChange={this.handleChange}
-              >
-                <option value="" disabled className="grey-text">
-                  Choose backend
-                </option>
-                <option value="php" className="left">
-                  PHP
-                </option>
-                <option value="nodejs" className="left">
-                  NodeJS
-                </option>
-                <option value="ruby" className="left">
-                  Ruby
-                </option>
-                <option value="java" className="left">
-                  Java
-                </option>
-                <option value="python" className="left">
-                  Python
-                </option>
-                <option value="rust" className="left">
-                  Rust
-                </option>
-              </select>
-              <label>Backend</label>
-            </div>
-
-            <div className="input-field col s12 m4">
-              <select id="techDb" defaultValue="" onChange={this.handleChange}>
-                <option value="" disabled>
-                  Choose database
-                </option>
-                <option value="sql">SQL</option>
-                <option value="mongodb">MongoDB</option>
-                <option value="graphql">GraphQL</option>
-              </select>
-              <label>Database</label>
-            </div>
-            <span className="col s12 fieldTitle">Time Estimate</span>
-            <div className="input-field col s3 m2">
-              <label htmlFor="time">Amount</label>
-              <input
-                type="number"
-                min="0"
-                id="timeAmount"
-                onChange={this.handleChange}
-              />
-            </div>
-            <div className="input-field col s9 m10">
-              <select
-                id="timeUnit"
-                defaultValue=""
-                onChange={this.handleChange}
-              >
-                <option value="" disabled>
-                  Time unit
-                </option>
-                <option value="hours">Hours</option>
-                <option value="days">Days</option>
-                <option value="weeks">Weeks</option>
-                <option value="months">Months</option>
-              </select>
-              <label>Time Unit</label>
-            </div>
-            <div className="input-field col s12 center-align">
-              <button type="submit" className="btn submitBtn ">
-                Create Project <i class="material-icons right">send</i>
-              </button>
-            </div>
+      <div className="section createProject">
+        <div className="row">
+          <div className="col l2 offset-l1" data-aos="fade-right">
+            <img
+              src="/img/undraw_create_project.svg"
+              alt="create new project logo"
+            />
           </div>
-        </form>
+          <div className=" col m12 l9" data-aos="fade-left">
+            <form className="container" onSubmit={this.handleSubmit}>
+              <div className="row">
+                <h4 className="title">Create New Project</h4>
+                <span className="col s12 fieldTitle">General Information</span>
+                <div className="input-field col s12 m5">
+                  {this.renderInput("text", "title", "Title")}
+                </div>
+                <div className="input-field col s12 m7">
+                  <select
+                    id="category"
+                    name="category"
+                    defaultValue=""
+                    onChange={this.handleChange}
+                  >
+                    <option value="" disabled>
+                      Choose category
+                    </option>
+                    <option value="e-commerce">E-Commerce</option>
+                    <option value="crm">CRM</option>
+                    <option value="pwa">Progressive Web App</option>
+                    <option value="timeManagement">Time Management</option>
+                    <option value="projectPlan">Project Planner</option>
+                    <option value="other">Other</option>
+                  </select>
+                  <label>Category</label>
+                </div>
+                <div className="input-field col s12">
+                  {this.renderInput(
+                    "textarea",
+                    "description",
+                    "Project Description"
+                  )}
+                </div>
+                <span className="col s12 fieldTitle">Tech Stack</span>
+                <div className="input-field col s12 m4">
+                  <select
+                    defaultValue=""
+                    id="techFrontend"
+                    onChange={this.handleChange}
+                  >
+                    <option value="" disabled>
+                      Choose frontend
+                    </option>
+                    <option value="vanilla">Vanilla</option>
+                    <option value="jquery">Jquery</option>
+                    <option value="react">React</option>
+                    <option value="angular">Angular</option>
+                    <option value="vue">Vue</option>
+                    <option value="ember">Ember</option>
+                  </select>
+                  <label>Frontend</label>
+                </div>
+                <div className="input-field col s12 m4">
+                  <select
+                    id="techBackend"
+                    defaultValue=""
+                    onChange={this.handleChange}
+                  >
+                    <option value="" disabled className="grey-text">
+                      Choose backend
+                    </option>
+                    <option value="php" className="left">
+                      PHP
+                    </option>
+                    <option value="nodejs" className="left">
+                      NodeJS
+                    </option>
+                    <option value="ruby" className="left">
+                      Ruby
+                    </option>
+                    <option value="java" className="left">
+                      Java
+                    </option>
+                    <option value="python" className="left">
+                      Python
+                    </option>
+                    <option value="rust" className="left">
+                      Rust
+                    </option>
+                  </select>
+                  <label>Backend</label>
+                </div>
+
+                <div className="input-field col s12 m4">
+                  <select
+                    id="techDb"
+                    defaultValue=""
+                    onChange={this.handleChange}
+                  >
+                    <option value="" disabled>
+                      Choose database
+                    </option>
+                    <option value="sql">SQL</option>
+                    <option value="mongodb">MongoDB</option>
+                    <option value="graphql">GraphQL</option>
+                  </select>
+                  <label>Database</label>
+                </div>
+                <span className="col s12 fieldTitle">Time Estimate</span>
+                <div className="input-field col s3 m2">
+                  <label htmlFor="time">Amount</label>
+                  <input
+                    type="number"
+                    min="0"
+                    id="timeAmount"
+                    onChange={this.handleChange}
+                  />
+                </div>
+                <div className="input-field col s9 m10">
+                  <select
+                    id="timeUnit"
+                    defaultValue=""
+                    onChange={this.handleChange}
+                  >
+                    <option value="" disabled>
+                      Time unit
+                    </option>
+                    <option value="hours">Hours</option>
+                    <option value="days">Days</option>
+                    <option value="weeks">Weeks</option>
+                    <option value="months">Months</option>
+                  </select>
+                  <label>Time Unit</label>
+                </div>
+                <div className="input-field col s12">
+                  <button type="submit" className="btn submitBtn ">
+                    Create Project <i className="material-icons right">send</i>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     );
   }

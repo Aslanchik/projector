@@ -12,8 +12,18 @@ class Dashboard extends Component {
       <>
         {projects.map((project, i) => (
           <div className="row">
-            <h3 className={`col s1 center-align placement${i + 1}`}>{i + 1}</h3>
-            <div className="col s11">
+            <h3
+              className={`col s1 center-align placement${i + 1}`}
+              data-aos="fade-left"
+              data-aos-duration="500"
+            >
+              {i + 1}
+            </h3>
+            <div
+              className="col s11"
+              data-aos="fade-left"
+              data-aos-duration="1000"
+            >
               <ProjectSummary key={project.id} project={project} />
             </div>
           </div>
@@ -26,8 +36,11 @@ class Dashboard extends Component {
     const { projects } = this.props;
     return (
       <div className="dashboard container">
+        <h4 className="center-align title col s10" data-aos="zoom-in">
+          Top Voted Projects
+        </h4>
+
         <div className="section">
-          <h4 className="center-align">Top Voted Projects</h4>
           <div className="row">
             <div className="col s12">
               {projects ? (
