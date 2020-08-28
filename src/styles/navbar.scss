@@ -16,5 +16,15 @@
   }
 }
 .sidenav {
-  font-size: 3rem;
+  background-color: $WHITE;
+  span {
+    color: $PURPLE;
+    font-size: 1.5rem;
+    padding: 0 6px;
+  }
+  li {
+    &:hover {
+      background-color: #ebe7ec;
+    }
+  }
 }

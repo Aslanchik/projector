@@ -20,6 +20,7 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Navbar />
+
         <Switch>
           <PrivateRoute exact path="/" component={Dashboard} />
           <PrivateRoute path="/project/:id" component={ProjectDetails} />
