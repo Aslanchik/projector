@@ -61,7 +61,7 @@ const ProjectSummary = ({
 
         <div className="card-action">
           <div>
-            <p className="grey-text left">
+            <p className="grey-text left author">
               {moment(createdAt.toDate()).calendar()} -{" "}
               <span>
                 {firstCharUppercase(fname)} {firstCharUppercase(lname)}

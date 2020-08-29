@@ -87,7 +87,7 @@ const sortProjects = (projects, sortParam) => {
 
 const filterProjects = (projects, searchParam) => {
   const filteredProjects = projects.filter((project) => {
-    return project.title.toLowerCase().includes(searchParam);
+    return project.title.toLowerCase().includes(searchParam.toLowerCase());
   });
   return filteredProjects;
 };

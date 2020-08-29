@@ -39,6 +39,11 @@
 }
 
 @media only screen and (max-width: 766px) {
+  .card-action {
+    .author {
+      font-size: 0.8rem;
+    }
+  }
   .devI {
     font-size: 2rem;
     margin-right: 4px;
