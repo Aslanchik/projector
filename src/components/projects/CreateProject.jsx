@@ -62,7 +62,7 @@ class CreateProject extends Component {
                     defaultValue=""
                     onChange={this.handleChange}
                   >
-                    <option value="" disabled>
+                    <option value="" disabled className="default">
                       Choose category
                     </option>
                     <option value="e-commerce">E-Commerce</option>

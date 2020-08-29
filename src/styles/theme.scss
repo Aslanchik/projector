@@ -6,14 +6,15 @@ $RED: #db5461;
 $LIGHT_RED: #ffd9ce;
 $WHITE: #f6f3f7;
 $GREEN: #21c063;
+$YELLOW: #fffd70;
 
 // INPUTS
 
 /* Inactive/Active Default input field color */
 .input-field input[type]:focus:not([readonly]),
-.input-field textarea:not([readonly]),
-.input-field textarea:focus:not([readonly]) {
-  border-bottom: 0.3px solid $LIGHT_PURPLE;
+.input-field textarea:focus:not([readonly]),
+.input-field .select-dropdown:focus {
+  border-bottom: 0.3px solid $LIGHT_PURPLE !important;
   box-shadow: 0 0.3px 0 0 $LIGHT_PURPLE;
 }
 
@@ -60,4 +61,13 @@ $GREEN: #21c063;
 .input-field textarea.valid ~ .helper-text::after,
 .input-field textarea.valid:focus ~ .helper-text::after {
   color: $GREEN;
+}
+
+.select-dropdown {
+  color: $PURPLE;
+  border-bottom: 0.3px solid $LIGHT_PURPLE;
+}
+
+ul.dropdown-content.select-dropdown li span {
+  color: $LIGHT_PURPLE;
 }

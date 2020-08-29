@@ -27,7 +27,8 @@ const Navbar = ({ auth, profile, ...props }) => {
           <div className="container">
             <Link to="/" className="brand-logo row">
               <div className="valign-wrapper">
-                Projec<span className="material-icons logoIcon">highlight</span>
+                Projec
+                <span className="material-icons logoIcon">highlight</span>
                 or
               </div>
             </Link>
