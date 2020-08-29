@@ -44,7 +44,7 @@ class Dashboard extends Component {
         <div className="section">
           <div className="row hide-on-small-only">
             <div className="col s12 l10 offset-l1">
-              {projects ? this.renderProjects() : <Preloader />}
+              {/* projects ? this.renderProjects() : */ <Preloader />}
             </div>
           </div>
           <div className="row container show-on-small hide-on-med-and-up">

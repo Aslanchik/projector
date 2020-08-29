@@ -32,8 +32,8 @@ function AuthIsLoaded({ children }) {
   const auth = useSelector((state) => state.firebase.auth);
   if (!isLoaded(auth))
     return (
-      <div className="container">
-        <div className="progress valign-wrapper">
+      <div className="container  valign-wrapper">
+        <div className="progress">
           <div className="indeterminate"></div>
         </div>
       </div>

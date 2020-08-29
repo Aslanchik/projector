@@ -1,0 +1,25 @@
+// PROGRESS BAR
+
+.progress {
+  height: 0.5rem;
+  background-color: $LIGHT_PURPLE;
+  .indeterminate {
+    background-color: $PURPLE;
+  }
+}
+
+// PRELOADER
+.preloader-wrapper {
+  .spinner-layer {
+    .circle-clipper.left {
+      .circle {
+        border: 3px solid $LIGHT_PURPLE;
+      }
+    }
+    .circle-clipper.right {
+      .circle {
+        border: 3px solid $PURPLE;
+      }
+    }
+  }
+}
