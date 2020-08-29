@@ -6,6 +6,7 @@ import M from "materialize-css/dist/js/materialize.min.js";
 
 import ProjectList from "./ProjectList";
 import Input from "../shared/Input";
+import Preloader from "../shared/Preloader";
 
 class AllProjects extends Component {
   state = { searchParam: "", sortParam: "" };
@@ -59,21 +60,7 @@ class AllProjects extends Component {
               sortParam={sortParam}
             />
           ) : (
-            <div className="center-align">
-              <div className="preloader-wrapper big active">
-                <div className="spinner-layer spinner-blue-only">
-                  <div className="circle-clipper left">
-                    <div className="circle"></div>
-                  </div>
-                  <div className="gap-patch">
-                    <div className="circle"></div>
-                  </div>
-                  <div className="circle-clipper right">
-                    <div className="circle"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <Preloader />
           )}
         </div>
       </div>

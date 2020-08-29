@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import M from "materialize-css/dist/js/materialize.min.js";
 
 import { updateProject } from "../../store/actions/projectActions";
+import Input from "../shared/Input";
+import SubmitBtn from "../shared/SubmitBtn";
 class EditProject extends Component {
   state = {
     ...this.props.project,
@@ -10,7 +12,6 @@ class EditProject extends Component {
 
   componentDidMount() {
     M.AutoInit();
-    console.log(this.props.project);
   }
 
   handleChange = (e) => {
@@ -22,42 +23,6 @@ class EditProject extends Component {
     this.props.update(this.state);
     // CLOSE EDIT WINDOW
     document.querySelector(".closeBtn").click();
-  };
-
-  renderInput = (type, name, title, defaultValue, ...rest) => {
-    if (type === "textarea") {
-      return (
-        <>
-          <textarea
-            {...rest}
-            defaultValue={defaultValue}
-            id={name}
-            name={name}
-            className="materialize-textarea"
-            data-length="1024"
-            onChange={this.handleChange}
-          ></textarea>
-          <label htmlFor={name} className="active">
-            {title}
-          </label>
-        </>
-      );
-    }
-    return (
-      <>
-        <input
-          {...rest}
-          defaultValue={defaultValue}
-          type={type}
-          id={name}
-          name={name}
-          onChange={this.handleChange}
-        />
-        <label htmlFor={name} className="active">
-          {title}
-        </label>
-      </>
-    );
   };
 
   render() {
@@ -79,7 +44,14 @@ class EditProject extends Component {
           <div className="row">
             <span className="col s12 fieldTitle">General Information</span>
             <div className="input-field col s12 m5">
-              {this.renderInput("text", "title", "Title", title)}
+              <Input
+                type={"text"}
+                name={"title"}
+                title={"Title"}
+                defaultValue={title}
+                onChange={this.handleChange}
+                labelClass={"active"}
+              />
             </div>
             <div className="input-field col s12 m7">
               <select
@@ -101,12 +73,14 @@ class EditProject extends Component {
               <label>Category</label>
             </div>
             <div className="input-field col s12">
-              {this.renderInput(
-                "textarea",
-                "description",
-                "Project Description",
-                description
-              )}
+              <Input
+                type={"textarea"}
+                name={"description"}
+                title={"Project Description"}
+                defaultValue={description}
+                onChange={this.handleChange}
+                labelClass={"active"}
+              />
             </div>
             <span className="col s12 fieldTitle">Tech Stack</span>
             <div className="input-field col s12 m4">
@@ -174,14 +148,13 @@ class EditProject extends Component {
             </div>
             <span className="text-grey col s12 fieldTitle">Time Estimate</span>
             <div className="input-field col s3 m2">
-              <label htmlFor="time" className="active">
-                Amount
-              </label>
-              <input
-                type="number"
-                min="0"
-                id="timeAmount"
+              <Input
+                type={"number"}
+                name={"timeAmount"}
+                title={"Amount"}
                 defaultValue={timeAmount}
+                labelClass={"active"}
+                min={"0"}
                 onChange={this.handleChange}
               />
             </div>
@@ -202,9 +175,7 @@ class EditProject extends Component {
               <label>Time Unit</label>
             </div>
             <div className="input-field col s12 center-align">
-              <button type="submit" className="btn submitBtn">
-                Save<i className="material-icons right">save</i>
-              </button>
+              <SubmitBtn title={"save"} icon={"save"} />
             </div>
           </div>
         </form>

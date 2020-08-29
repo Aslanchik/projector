@@ -3,22 +3,11 @@ import moment from "moment";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-import {
-  firstCharUppercase,
-  determineTechStack,
-  renderUpVoteButton,
-} from "../../utils/pipes";
+import { firstCharUppercase } from "../../utils/pipes";
+import { determineTechStack } from "../../services/projectService";
+import { handleUpVote, renderUpVoteButton } from "../../services/upVoteService";
 import { upVoteProject } from "../../store/actions/projectActions";
 import { addUpVotedProject } from "../../store/actions/userActions";
-
-const handleUpVote = (project, props) => {
-  const upVotedProject = { ...project };
-  upVotedProject.upVote++;
-  if (!props.profile.upVoted.includes(project.id)) {
-    props.upVoteProject(upVotedProject);
-    props.addUpVotedProject(project.id);
-  }
-};
 
 const ProjectSummary = ({
   project,

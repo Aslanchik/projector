@@ -4,26 +4,15 @@ import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import moment from "moment";
 
-import {
-  firstCharUppercase,
-  determineTechStack,
-  renderUpVoteButton,
-} from "../../utils/pipes";
+import { firstCharUppercase } from "../../utils/pipes";
+import { determineTechStack } from "../../services/projectService";
+import { handleUpVote, renderUpVoteButton } from "../../services/upVoteService";
 import { upVoteProject } from "../../store/actions/projectActions";
 import { addUpVotedProject } from "../../store/actions/userActions";
 import EditProject from "./EditProject";
 
 class ProjectDetails extends Component {
   state = { edit: false };
-
-  handleUpVote = (project, props) => {
-    const upVotedProject = { ...project };
-    upVotedProject.upVote++;
-    if (!props.profile.upVoted.includes(project.id)) {
-      props.upVoteProject(upVotedProject);
-      props.addUpVotedProject(project.id);
-    }
-  };
 
   renderEditForm = (project) => {
     return <EditProject project={project} />;
@@ -96,7 +85,7 @@ class ProjectDetails extends Component {
               <p className="grey-text right valign-wrapper">
                 <i
                   className="material-icons green-text upVoteIcon"
-                  onClick={() => this.handleUpVote(project, this.props)}
+                  onClick={() => handleUpVote(project, this.props)}
                 >
                   {profile.isLoaded && renderUpVoteButton(profile, project)}
                 </i>{" "}

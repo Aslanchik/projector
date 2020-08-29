@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 
 import ProjectSummary from "../projects/ProjectSummary";
+import Preloader from "../shared/Preloader";
 
 class Dashboard extends Component {
   renderProjects = () => {
@@ -35,33 +36,15 @@ class Dashboard extends Component {
   renderDashboard = () => {
     const { projects } = this.props;
     return (
-      <div className="dashboard container">
+      <div className="dashboard">
         <h4 className="center-align title col s10" data-aos="zoom-in">
           Top Voted Projects
         </h4>
 
         <div className="section">
           <div className="row">
-            <div className="col s12">
-              {projects ? (
-                this.renderProjects()
-              ) : (
-                <div className="center-align">
-                  <div className="preloader-wrapper big active">
-                    <div className="spinner-layer spinner-blue-only">
-                      <div className="circle-clipper left">
-                        <div className="circle"></div>
-                      </div>
-                      <div className="gap-patch">
-                        <div className="circle"></div>
-                      </div>
-                      <div className="circle-clipper right">
-                        <div className="circle"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
+            <div className="col s12 l10 offset-l1">
+              {projects ? this.renderProjects() : <Preloader />}
             </div>
           </div>
         </div>

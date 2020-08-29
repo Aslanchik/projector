@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import M from "materialize-css/dist/js/materialize.min.js";
 
 import { createProject } from "../../store/actions/projectActions";
+import Input from "../shared/Input";
+import SubmitBtn from "../shared/SubmitBtn";
 
 class CreateProject extends Component {
   state = {
@@ -30,36 +32,6 @@ class CreateProject extends Component {
     this.props.history.push("/");
   };
 
-  renderInput = (type, name, title, ...rest) => {
-    if (type === "textarea") {
-      return (
-        <>
-          <textarea
-            id={name}
-            {...rest}
-            name={name}
-            className="materialize-textarea"
-            data-length="1024"
-            onChange={this.handleChange}
-          ></textarea>
-          <label htmlFor={name}>{title}</label>
-        </>
-      );
-    }
-    return (
-      <>
-        <input
-          type={type}
-          id={name}
-          name={name}
-          {...rest}
-          onChange={this.handleChange}
-        />
-        <label htmlFor={name}>{title}</label>
-      </>
-    );
-  };
-
   render() {
     return (
       <div className="section createProject">
@@ -76,7 +48,12 @@ class CreateProject extends Component {
                 <h4 className="title">Create New Project</h4>
                 <span className="col s12 fieldTitle">General Information</span>
                 <div className="input-field col s12 m5">
-                  {this.renderInput("text", "title", "Title")}
+                  <Input
+                    type={"text"}
+                    name={"title"}
+                    title={"Title"}
+                    onChange={this.handleChange}
+                  />
                 </div>
                 <div className="input-field col s12 m7">
                   <select
@@ -98,11 +75,12 @@ class CreateProject extends Component {
                   <label>Category</label>
                 </div>
                 <div className="input-field col s12">
-                  {this.renderInput(
-                    "textarea",
-                    "description",
-                    "Project Description"
-                  )}
+                  <Input
+                    type={"textarea"}
+                    name={"description"}
+                    title={"Project Description"}
+                    onChange={this.handleChange}
+                  />
                 </div>
                 <span className="col s12 fieldTitle">Tech Stack</span>
                 <div className="input-field col s12 m4">
@@ -171,12 +149,12 @@ class CreateProject extends Component {
                 </div>
                 <span className="col s12 fieldTitle">Time Estimate</span>
                 <div className="input-field col s3 m2">
-                  <label htmlFor="time">Amount</label>
-                  <input
-                    type="number"
-                    min="0"
-                    id="timeAmount"
+                  <Input
+                    type={"number"}
+                    name={"timeAmount"}
+                    title={"Amount"}
                     onChange={this.handleChange}
+                    min={"0"}
                   />
                 </div>
                 <div className="input-field col s9 m10">
@@ -196,9 +174,7 @@ class CreateProject extends Component {
                   <label>Time Unit</label>
                 </div>
                 <div className="input-field col s12">
-                  <button type="submit" className="btn submitBtn ">
-                    Create Project <i className="material-icons right">send</i>
-                  </button>
+                  <SubmitBtn title={"Create project"} />
                 </div>
               </div>
             </form>

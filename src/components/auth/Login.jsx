@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import { login } from "../../store/actions/authActions";
+import Input from "../shared/Input";
+import SubmitBtn from "../shared/SubmitBtn";
 
 class Login extends Component {
   state = {
@@ -39,12 +41,12 @@ class Login extends Component {
                 <div className="col s12">
                   <div className="input-field">
                     <i className="material-icons prefix">email</i>
-                    <input
-                      type="email"
-                      id="email"
+                    <Input
+                      type={"email"}
+                      name={"email"}
+                      title={"Email"}
                       onChange={this.handleChange}
                     />
-                    <label htmlFor="email">Email</label>
                   </div>
                 </div>
               </div>
@@ -52,21 +54,19 @@ class Login extends Component {
                 <div className="col s12">
                   <div className="input-field">
                     <i className="material-icons prefix">vpn_key</i>
-                    <input
-                      type="password"
-                      id="password"
+                    <Input
+                      type={"password"}
+                      name={"password"}
+                      title={"Password"}
                       onChange={this.handleChange}
                     />
-                    <label htmlFor="password">Password</label>
                   </div>
                 </div>
               </div>
               <div className="row">
                 <div className="col s12">
                   <div className="input-field">
-                    <button className="btn submitBtn lighten-1 z-depth-0">
-                      <i className="material-icons right">send</i>Submit
-                    </button>
+                    <SubmitBtn title={"Submit"} />
                     <div className="red-text center">{this.props.authErr}</div>
                   </div>
                 </div>

@@ -1,31 +1,35 @@
 import React from "react";
 
-const Input = ({ type, name, title, defaultValue, ...rest }) => {
+const Input = ({ type, name, title, defaultValue, labelClass, ...rest }) => {
   if (type === "textarea") {
     return (
       <>
         <textarea
-          id={name}
           {...rest}
           defaultValue={defaultValue}
+          id={name}
           name={name}
           className="materialize-textarea"
-          data-length="120"
+          data-length="1024"
         ></textarea>
-        <label htmlFor={name}>{title}</label>
+        <label htmlFor={name} className={labelClass}>
+          {title}
+        </label>
       </>
     );
   }
   return (
     <>
       <input
+        defaultValue={defaultValue}
         type={type}
         id={name}
-        defaultValue={defaultValue}
         name={name}
         {...rest}
       />
-      <label htmlFor={name}>{title}</label>
+      <label htmlFor={name} className={labelClass}>
+        {title}
+      </label>
     </>
   );
 };
