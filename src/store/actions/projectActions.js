@@ -48,7 +48,6 @@ export const upVoteProject = (project) => {
 export const updateProject = (project) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
-
     firestore
       .collection("projects")
       .doc(project.id)

@@ -49,7 +49,7 @@ export const register = ({ email, password, firstName, lastName }) => {
           });
       })
       .then(() => {
-        dispatch({ type: "REGISTER_SUCC" });
+        dispatch({ type: "REGISTER_SUCC", firstName });
       })
       .catch((err) => {
         dispatch({ type: "REGISTER_ERR", err });

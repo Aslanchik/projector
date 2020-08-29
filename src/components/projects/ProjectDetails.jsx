@@ -15,7 +15,9 @@ class ProjectDetails extends Component {
   state = { edit: false };
 
   renderEditForm = (project) => {
-    return <EditProject project={project} />;
+    return (
+      <EditProject project={project} projectId={this.props.match.params.id} />
+    );
   };
 
   render() {

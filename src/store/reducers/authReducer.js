@@ -1,3 +1,6 @@
+import { successSwal, successToast } from "../../services/alertService";
+import { firstCharUppercase } from "../../utils/pipes";
+
 const initState = {
   authErr: null,
 };
@@ -5,28 +8,28 @@ const initState = {
 const authReducer = (state = initState, action) => {
   switch (action.type) {
     case "LOGIN_ERROR":
-      console.log("login err");
       return {
         ...state,
         authErr: "Login Failed!",
       };
     case "LOGIN_SUCCESS":
-      console.log("Login Success");
+      successToast(`Welcome back!`);
       return {
         ...state,
         authErr: null,
       };
     case "LOGOUT_SUCCESS":
-      console.log("Logout Success");
       return state;
     case "REGISTER_SUCC":
-      console.log("Register Success");
+      successSwal(
+        `Welcome, ${firstCharUppercase(action.firstName)}!`,
+        "/img/undraw_welcome_cats_thqn.svg"
+      );
       return {
         ...state,
         authErr: null,
       };
     case "REGISTER_ERR":
-      console.log("register error");
       return {
         ...state,
         authErr: action.err.message,

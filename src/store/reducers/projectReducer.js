@@ -1,25 +1,23 @@
+import { successToast } from "../../services/alertService";
+
 const initState = {};
 
 const projectReducer = (state = initState, action) => {
   switch (action.type) {
     case "CREATE_PROJECT":
-      console.log("created project", action.project);
+      successToast("New Project Created!");
       return state;
     case "CREATE_PROJECT_ERROR":
-      console.log("create project error", action.err);
       return state;
 
     case "UPVOTE_PROJECT_SUCC":
-      console.log("project upvoted successfully", action.project);
       return state;
     case "UPVOTE_PROJECT_ERR":
-      console.log("project upvote errrrrr", action.err);
       return state;
     case "UPDATE_PROJECT_SUCC":
-      console.log("update project success", action.project);
+      successToast("Project Updated Successfully!");
       return state;
     case "UPDATE_PROJECT_ERR":
-      console.log("update project errorrrrr", action.err);
       return state;
     default:
       return state;

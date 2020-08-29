@@ -8,6 +8,7 @@ import SubmitBtn from "../shared/SubmitBtn";
 class EditProject extends Component {
   state = {
     ...this.props.project,
+    id: this.props.projectId,
   };
 
   componentDidMount() {

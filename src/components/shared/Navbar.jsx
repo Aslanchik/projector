@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import M from "materialize-css/dist/js/materialize.min.js";
 
@@ -41,7 +41,7 @@ const Navbar = ({ auth, profile, ...props }) => {
         </nav>
       </div>
       <ul className="sidenav" id="slide-out">
-        {auth.isLoaded && <Sidenav auth={auth} logout={props.logout} />}
+        <Sidenav auth={auth} logout={props.logout} />
       </ul>
     </>
   );
