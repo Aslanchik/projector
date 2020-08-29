@@ -1,12 +1,36 @@
-.alarmIcon,
-.upVoteIcon {
-  font-size: 1.5rem;
-  margin-right: 2px;
-}
-
-.upVoteIcon {
-  &:hover {
-    cursor: pointer;
+.projectSummary {
+  .alarmIcon,
+  .upVoteIcon {
+    font-size: 1.5rem;
+    margin-right: 2px;
+  }
+  a {
+    color: $PURPLE;
+    &:visited {
+      color: $LIGHT_PURPLE;
+    }
+  }
+  .card-title {
+    margin-top: -10px;
+  }
+  .upVoteIcon {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .techStack {
+    display: flex;
+    flex-direction: column;
+    margin-top: -10px;
+    line-height: 2;
+    p {
+      font-size: 1.2rem;
+    }
+  }
+  .category,
+  .timeEstimate {
+    display: flex;
+    flex-direction: column;
   }
 }
 .devI {

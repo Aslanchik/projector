@@ -40,27 +40,36 @@ const ProjectSummary = ({
   ...props
 }) => {
   return (
-    <div className="card project-summary hoverable">
+    <div className="card projectSummary hoverable">
       <div className="card-content grey-text text-darken-3">
         <Link to={`/project/${id}`}>
           <h5 className="card-title">
             {firstCharUppercase(title)}{" "}
-            <span className="right">
-              {determineTechStack(techFrontend, techBackend, techDb)}
+            <span className="techStack right">
+              <p className=" center-align fieldTitle ">Tech Stack</p>
+              <span>
+                {determineTechStack(techFrontend, techBackend, techDb)}
+              </span>
             </span>
           </h5>
         </Link>
+
         <div className="row">
-          <div className="col s3 grey-text text-darken-2">
+          <div className="col s3 category">
+            <span className="fieldTitle">Category</span>
             <span>{category}</span>
           </div>
-          <div className="col s5 grey-text valign-wrapper">
-            <i className="material-icons alarmIcon left-align">alarm</i>{" "}
-            {timeAmount}
-            {"  "}
-            {timeUnit}
+          <div className="col s5 timeEstimate">
+            <span className="fieldTitle">Time Estimate</span>
+            <span className="grey-text text-darken-2 valign-wrapper">
+              <i className="material-icons alarmIcon left-align">alarm</i>{" "}
+              {timeAmount}
+              {"  "}
+              {timeUnit}
+            </span>
           </div>
         </div>
+
         <div className="card-action">
           <div>
             <p className="grey-text left">

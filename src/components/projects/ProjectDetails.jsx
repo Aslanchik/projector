@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { compose } from "redux";
-import { connect, useSelector } from "react-redux";
+import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import moment from "moment";
 
@@ -31,7 +31,6 @@ class ProjectDetails extends Component {
 
   render() {
     const { profile, project, auth } = this.props;
-    console.log(project);
     return project ? (
       <div className="container section">
         <div className="card projectDetails" data-aos="zoom-in">

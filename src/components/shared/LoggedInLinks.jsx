@@ -6,7 +6,7 @@ import { logout } from "../../store/actions/authActions";
 
 const LoggedInLinks = ({ profile, ...props }) => {
   return (
-    <ul>
+    <ul className="right">
       <div className="nav hide-on-med-and-down">
         <li>
           <NavLink to="/create-project">New Project</NavLink>
