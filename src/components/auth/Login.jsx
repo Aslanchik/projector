@@ -27,7 +27,7 @@ class Login extends Component {
           <div className="col l2 offset-l1" data-aos="fade-right">
             <img
               className="loginLogo"
-              src="/img/undraw_login_re_4vu2.svg"
+              src="/img/undraw_Login_re_4vu2.svg"
               alt="login logo"
             />
           </div>
