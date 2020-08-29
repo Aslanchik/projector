@@ -13,6 +13,7 @@ import PrivateRoute from "./utils/privateRoute";
 import PublicRoute from "./utils/publicRoute";
 import AllProjects from "./components/projects/AllProjects";
 import Profile from "./components/user/Profile";
+import NotFound from "./components/shared/NotFound";
 
 function App() {
   AOS.init();
@@ -23,12 +24,17 @@ function App() {
 
         <Switch>
           <PrivateRoute exact path="/" component={Dashboard} />
-          <PrivateRoute path="/project/:id" component={ProjectDetails} />
-          <PublicRoute path="/login" component={Login} />
-          <PublicRoute path="/register" component={Register} />
-          <PrivateRoute path="/create-project" component={CreateProject} />
-          <PrivateRoute path="/all-projects" component={AllProjects} />
-          <PrivateRoute path="/profile" component={Profile} />
+          <PrivateRoute exact path="/project/:id" component={ProjectDetails} />
+          <PublicRoute exact path="/login" component={Login} />
+          <PublicRoute exact path="/register" component={Register} />
+          <PrivateRoute
+            exact
+            path="/create-project"
+            component={CreateProject}
+          />
+          <PrivateRoute exact path="/all-projects" component={AllProjects} />
+          <PrivateRoute exact path="/profile" component={Profile} />
+          <PublicRoute path="*" component={NotFound} />
         </Switch>
       </div>
     </BrowserRouter>

@@ -1,0 +1,48 @@
+.notFound {
+  .section {
+    margin-top: 100px;
+
+    a {
+      color: $PURPLE;
+      font-weight: bold;
+      line-height: 2;
+      margin-left: 100px;
+    }
+  }
+}
+
+@media only screen and (max-width: 1312px) {
+  .notFound {
+    h3 {
+      font-size: 2.5rem;
+    }
+  }
+}
+@media only screen and (max-width: 1132px) {
+  .notFound {
+    h3 {
+      font-size: 2rem;
+    }
+  }
+}
+@media only screen and (max-width: 766px) {
+  .notFound {
+    .row {
+      h3 {
+        font-size: 1.3rem;
+        margin-left: 50px;
+      }
+    }
+  }
+}
+@media only screen and (max-width: 601px) {
+  .notFound {
+    .row {
+      display: flex;
+      flex-direction: column;
+      h3 {
+        font-size: 2rem;
+      }
+    }
+  }
+}

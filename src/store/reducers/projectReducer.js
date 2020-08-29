@@ -1,11 +1,11 @@
-import { successToast } from "../../services/alertService";
+import { successToast, successSwal } from "../../services/alertService";
 
 const initState = {};
 
 const projectReducer = (state = initState, action) => {
   switch (action.type) {
     case "CREATE_PROJECT":
-      successToast("New Project Created!");
+      successSwal("New Project Created!", "/img/undraw_completed_ngx6.svg");
       return state;
     case "CREATE_PROJECT_ERROR":
       return state;
