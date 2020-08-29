@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import M from "materialize-css/dist/js/materialize.min.js";
@@ -8,14 +8,18 @@ import LoggedOutLinks from "./LoggedOutLinks";
 import { logout } from "../../store/actions/authActions";
 
 const Navbar = ({ auth, profile, ...props }) => {
-  M.AutoInit();
+  // INITIALIZE SIDENAV
+  useEffect(() => {
+    let sidenav = document.querySelector("#slide-out");
+    M.Sidenav.init(sidenav, {});
+  });
 
   const links = auth.uid ? (
     <LoggedInLinks profile={profile} />
   ) : (
     <LoggedOutLinks />
   );
-  console.log(auth);
+
   return (
     <>
       <div className="navbar-fixed">
