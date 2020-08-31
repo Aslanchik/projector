@@ -5,7 +5,10 @@ import { firestoreConnect } from "react-redux-firebase";
 import moment from "moment";
 
 import { firstCharUppercase } from "../../utils/pipes";
-import { determineTechStack } from "../../services/projectService";
+import {
+  determineTechStack,
+  determineCategory,
+} from "../../services/projectService";
 import { handleUpVote, renderUpVoteButton } from "../../services/upVoteService";
 import { upVoteProject } from "../../store/actions/projectActions";
 import { addUpVotedProject } from "../../store/actions/userActions";
@@ -44,7 +47,7 @@ class ProjectDetails extends Component {
                 <div className="col s12 m4 category">
                   <span className="fieldTitle">Category</span>
                   <span className="grey-text text-darken-2">
-                    {project.category}
+                    {determineCategory(project.category)}
                   </span>
                 </div>
                 <div className="col s12 m4 timeEstimate">
