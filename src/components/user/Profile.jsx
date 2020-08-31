@@ -22,12 +22,12 @@ class Profile extends Component {
 
     return projects ? (
       <div className="container profile">
-        <div className="section col s12">
+        <div className="section">
           <div className="row">
             <div data-aos="fade-right">
               <UserInfo profile={profile} />
             </div>
-            <div className="col s12 m7 offset-m1" data-aos="fade-left">
+            <div className="col s12 m8" data-aos="fade-left">
               <h4 className="center-align title">My Projects</h4>
               {this.renderProjects(projects)}
             </div>

@@ -95,7 +95,25 @@ const filterProjects = (projects, searchParam) => {
 export const filterAndSortProjects = (projects, searchParam, sortParam) => {
   return sortProjects(filterProjects(projects, searchParam), sortParam);
 };
+
+export const determineCategory = (cat) => {
+  switch (cat) {
+    case "crm":
+      return "CRM";
+    case "pwa":
+      return "Progressive Web App";
+    case "e-commerce":
+      return "E-Commerce";
+    case "timeManagement":
+      return "Time Management";
+    case "projectPlan":
+      return "Project Planner";
+    default:
+      return "Other";
+  }
+};
 export default {
   determineTechStack,
   filterAndSortProjects,
+  determineCategory,
 };

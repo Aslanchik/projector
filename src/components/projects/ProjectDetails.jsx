@@ -41,13 +41,13 @@ class ProjectDetails extends Component {
             </div>
             <div className="projectDetailsTime">
               <div className="row">
-                <div className="col s3 category">
+                <div className="col s12 m4 category">
                   <span className="fieldTitle">Category</span>
                   <span className="grey-text text-darken-2">
                     {project.category}
                   </span>
                 </div>
-                <div className="col s5 timeEstimate">
+                <div className="col s12 m4 timeEstimate">
                   <span className="fieldTitle">Time Estimate</span>
                   <span className="grey-text text-darken-2 valign-wrapper">
                     <i className="material-icons alarmIcon">alarm</i>{" "}

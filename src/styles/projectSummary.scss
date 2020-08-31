@@ -32,6 +32,9 @@
     display: flex;
     flex-direction: column;
   }
+  .card-action {
+    margin-bottom: -20px;
+  }
 }
 .devI {
   font-size: 3rem;
@@ -39,17 +42,21 @@
 }
 
 @media only screen and (max-width: 766px) {
-  .card-action {
-    .author {
-      font-size: 0.9rem;
+  .projectSummary {
+    .devI {
+      font-size: 2rem;
+      margin-right: 4px;
     }
   }
-  .devI {
-    font-size: 2rem;
-    margin-right: 4px;
+}
+@media only screen and (max-width: 698px) {
+  .projectSummary {
+    .card-action {
+      font-size: 1rem;
+    }
   }
 }
-@media only screen and (max-width: 601px) {
+@media only screen and (max-width: 600px) {
   .projectSummary {
     .details {
       display: flex;
@@ -57,9 +64,14 @@
       line-height: 1.5;
     }
     .card-action {
-      .author {
-        font-size: 0.7rem;
-      }
+      font-size: 0.8rem;
+    }
+  }
+}
+@media only screen and (max-width: 360px) {
+  .projectSummary {
+    .card-action {
+      font-size: 0.7rem;
     }
   }
 }

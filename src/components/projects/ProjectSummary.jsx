@@ -4,7 +4,10 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { firstCharUppercase } from "../../utils/pipes";
-import { determineTechStack } from "../../services/projectService";
+import {
+  determineTechStack,
+  determineCategory,
+} from "../../services/projectService";
 import { handleUpVote, renderUpVoteButton } from "../../services/upVoteService";
 import { upVoteProject } from "../../store/actions/projectActions";
 import { addUpVotedProject } from "../../store/actions/userActions";
@@ -35,7 +38,7 @@ const ProjectSummary = ({
           <h5 className="card-title">
             {firstCharUppercase(title)}{" "}
             <span className="techStack right">
-              <p className=" center-align fieldTitle ">Tech Stack</p>
+              <p className="center-align fieldTitle ">Tech Stack</p>
               <span>
                 {determineTechStack(techFrontend, techBackend, techDb)}
               </span>
@@ -46,9 +49,9 @@ const ProjectSummary = ({
         <div className="row details">
           <div className="col s12 m3 category">
             <span className="fieldTitle">Category</span>
-            <span>{category}</span>
+            <span>{determineCategory(category)}</span>
           </div>
-          <div className="col s12 m5 timeEstimate">
+          <div className="col s12 m4 timeEstimate">
             <span className="fieldTitle">Time Estimate</span>
             <span className="grey-text text-darken-2 valign-wrapper">
               <i className="material-icons alarmIcon left-align">alarm</i>{" "}
@@ -59,14 +62,9 @@ const ProjectSummary = ({
           </div>
         </div>
 
-        <div className="card-action">
+        <div className="card-action grey-text">
           <div>
-            <p className="grey-text left author">
-              {moment(createdAt.toDate()).calendar()} -{" "}
-              <span>
-                {firstCharUppercase(fname)} {firstCharUppercase(lname)}
-              </span>
-            </p>
+            Posted by {firstCharUppercase(fname)} {firstCharUppercase(lname)}
             <p className="grey-text right valign-wrapper">
               <i
                 className="material-icons green-text upVoteIcon"
@@ -75,9 +73,10 @@ const ProjectSummary = ({
                 {props.profile.isLoaded &&
                   renderUpVoteButton(props.profile, project)}
               </i>{" "}
-              <span>{upVote}</span>
+              {project.upVote}
             </p>
           </div>
+          <div>{moment(project.createdAt.toDate()).calendar()}</div>
         </div>
       </div>
     </div>
