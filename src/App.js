@@ -22,21 +22,26 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Navbar />
-
-        <Switch>
-          <PrivateRoute exact path="/" component={Dashboard} />
-          <PrivateRoute exact path="/project/:id" component={ProjectDetails} />
-          <PublicRoute exact path="/login" component={Login} />
-          <PublicRoute exact path="/register" component={Register} />
-          <PrivateRoute
-            exact
-            path="/create-project"
-            component={CreateProject}
-          />
-          <PrivateRoute exact path="/all-projects" component={AllProjects} />
-          <PrivateRoute exact path="/profile" component={Profile} />
-          <Route path="*" component={NotFound} />
-        </Switch>
+        <div className="wrapper">
+          <Switch>
+            <PrivateRoute exact path="/" component={Dashboard} />
+            <PrivateRoute
+              exact
+              path="/project/:id"
+              component={ProjectDetails}
+            />
+            <PublicRoute exact path="/login" component={Login} />
+            <PublicRoute exact path="/register" component={Register} />
+            <PrivateRoute
+              exact
+              path="/create-project"
+              component={CreateProject}
+            />
+            <PrivateRoute exact path="/all-projects" component={AllProjects} />
+            <PrivateRoute exact path="/profile" component={Profile} />
+            <Route path="*" component={NotFound} />
+          </Switch>
+        </div>
 
         <Footer />
       </div>

@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="container footer">
-      <div className="row valign-wrapper">
+    <div className="section footer">
+      <div className="row">
         <div className="col s12 center-align">
           <p className="fieldTitle">Check out the code!</p>
           <div>
