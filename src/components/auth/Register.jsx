@@ -21,7 +21,7 @@ class Register extends Component {
     this.props.register(this.state);
   };
 
-  renderRegisterForm = (authErr) => {
+  renderRegisterForm = () => {
     return (
       <div className="section registerComp">
         <div className="row">
@@ -82,9 +82,6 @@ class Register extends Component {
               </div>
               <div className="input-field">
                 <SubmitBtn title={"Submit"} />
-                <div className="red-text center">
-                  {authErr ? <p>{authErr}</p> : null}
-                </div>
               </div>
             </form>
           </div>
@@ -94,16 +91,9 @@ class Register extends Component {
   };
 
   render() {
-    const { authErr } = this.props;
-    return <>{this.renderRegisterForm(authErr)}</>;
+    return <>{this.renderRegisterForm()}</>;
   }
 }
-
-const mapStateToProps = (state) => {
-  return {
-    authErr: state.auth.authErr,
-  };
-};
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -111,4 +101,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Register);
+export default connect(null, mapDispatchToProps)(Register);

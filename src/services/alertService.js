@@ -3,7 +3,7 @@ import Swal from "sweetalert2";
 export const successToast = (title) => {
   const Toast = Swal.mixin({
     toast: true,
-    position: "top-end",
+    position: "bottom-end",
     showConfirmButton: false,
     timer: 3000,
     timerProgressBar: true,
@@ -25,8 +25,8 @@ export const successSwal = (title, img) => {
     imageUrl: `${img}`,
     html: "I will automatically close in <b></b> milliseconds.",
     imageWidth: 200,
-    width: 300,
-    timer: 2000,
+    width: 370,
+    timer: 3000,
     timerProgressBar: true,
     onBeforeOpen: () => {
       Swal.showLoading();
@@ -46,7 +46,20 @@ export const successSwal = (title, img) => {
   });
 };
 
+export const errorSwal = (title, img) => {
+  Swal.fire({
+    title: `${title}`,
+    imageUrl: `${img}`,
+    imageWidth: 200,
+    width: 370,
+    showConfirmButton: true,
+    confirmButtonText: "Try Again",
+    confirmButtonColor: "#21c063",
+  });
+};
+
 export default {
   successToast,
   successSwal,
+  errorSwal,
 };

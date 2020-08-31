@@ -1,4 +1,8 @@
-import { successSwal, successToast } from "../../services/alertService";
+import {
+  successSwal,
+  successToast,
+  errorSwal,
+} from "../../services/alertService";
 import { firstCharUppercase } from "../../utils/pipes";
 
 const initState = {
@@ -8,6 +12,7 @@ const initState = {
 const authReducer = (state = initState, action) => {
   switch (action.type) {
     case "LOGIN_ERROR":
+      errorSwal("Incorrect Email or Password", "/img/undraw_cancel.svg");
       return {
         ...state,
         authErr: "Login Failed!",
@@ -30,6 +35,7 @@ const authReducer = (state = initState, action) => {
         authErr: null,
       };
     case "REGISTER_ERR":
+      errorSwal(`${action.err.message}`, "/img/undraw_cancel.svg");
       return {
         ...state,
         authErr: action.err.message,

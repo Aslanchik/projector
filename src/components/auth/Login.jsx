@@ -67,7 +67,6 @@ class Login extends Component {
                 <div className="col s12">
                   <div className="input-field">
                     <SubmitBtn title={"Submit"} />
-                    <div className="red-text center">{this.props.authErr}</div>
                   </div>
                 </div>
               </div>
@@ -86,7 +85,6 @@ class Login extends Component {
 const mapStateToProps = (state) => {
   return {
     auth: state.firebase.auth,
-    authErr: state.auth.authErr,
   };
 };
 

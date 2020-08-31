@@ -5,6 +5,7 @@ import M from "materialize-css/dist/js/materialize.min.js";
 import { createProject } from "../../store/actions/projectActions";
 import Input from "../shared/Input";
 import SubmitBtn from "../shared/SubmitBtn";
+import { errorSwal } from "../../services/alertService";
 
 class CreateProject extends Component {
   state = {
@@ -28,8 +29,13 @@ class CreateProject extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.createProject(this.state);
-    this.props.history.push("/");
+    const { title, category, description, timeAmount, timeUnit } = this.state;
+    if (title && category && description && timeAmount && timeUnit) {
+      this.props.createProject(this.state);
+      this.props.history.push("/");
+    } else {
+      errorSwal("Please fill out all of the fields", "/img/undraw_cancel.svg");
+    }
   };
 
   render() {
