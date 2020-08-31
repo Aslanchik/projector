@@ -1,0 +1,15 @@
+.footer {
+  bottom: 0;
+  width: 100%;
+  .container {
+    .row {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  .devI {
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+}

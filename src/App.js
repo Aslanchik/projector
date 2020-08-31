@@ -4,6 +4,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 import Navbar from "./components/shared/Navbar";
+import Footer from "./components/shared/Footer";
 import Dashboard from "./components/dashboard/Dashboard";
 import ProjectDetails from "./components/projects/ProjectDetails";
 import Login from "./components/auth/Login";
@@ -36,6 +37,8 @@ function App() {
           <PrivateRoute exact path="/profile" component={Profile} />
           <Route path="*" component={NotFound} />
         </Switch>
+
+        <Footer />
       </div>
     </BrowserRouter>
   );
