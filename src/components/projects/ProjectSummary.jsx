@@ -43,12 +43,12 @@ const ProjectSummary = ({
           </h5>
         </Link>
 
-        <div className="row">
-          <div className="col s3 category">
+        <div className="row details">
+          <div className="col s12 m3 category">
             <span className="fieldTitle">Category</span>
             <span>{category}</span>
           </div>
-          <div className="col s5 timeEstimate">
+          <div className="col s12 m5 timeEstimate">
             <span className="fieldTitle">Time Estimate</span>
             <span className="grey-text text-darken-2 valign-wrapper">
               <i className="material-icons alarmIcon left-align">alarm</i>{" "}
@@ -75,7 +75,7 @@ const ProjectSummary = ({
                 {props.profile.isLoaded &&
                   renderUpVoteButton(props.profile, project)}
               </i>{" "}
-              {upVote}
+              <span>{upVote}</span>
             </p>
           </div>
         </div>

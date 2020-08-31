@@ -41,11 +41,25 @@
 @media only screen and (max-width: 766px) {
   .card-action {
     .author {
-      font-size: 0.8rem;
+      font-size: 0.9rem;
     }
   }
   .devI {
     font-size: 2rem;
     margin-right: 4px;
+  }
+}
+@media only screen and (max-width: 601px) {
+  .projectSummary {
+    .details {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.5;
+    }
+    .card-action {
+      .author {
+        font-size: 0.7rem;
+      }
+    }
   }
 }
